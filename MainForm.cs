@@ -229,25 +229,25 @@ namespace Drakengard3MusicMaker
                                 {
                                     switch (VolSlider.Value)
                                     {
-                                        case (0):
+                                        case 0:
                                             Vol = 0;
                                             break;
-                                        case (1):
+                                        case 1:
                                             Vol = 1041865114;
                                             break;
-                                        case (2):
+                                        case 2:
                                             Vol = 1051931443;
                                             break;
-                                        case (3):
+                                        case 3:
                                             Vol = 1057803469;
                                             break;
-                                        case (4):
+                                        case 4:
                                             Vol = 1061158912;
                                             break;
-                                        case (5):
+                                        case 5:
                                             Vol = 1064514355;
                                             break;
-                                        case (6):
+                                        case 6:
                                             Vol = 1065353216;
                                             break;
                                     }
