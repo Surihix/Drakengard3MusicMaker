@@ -45,13 +45,13 @@ namespace Drakengard3MusicMaker.AppClasses
 
                                 if (outScdFileSize % 4 != 0)
                                 {
-                                    var Remainder = outScdFileSize % 4;
-                                    var IncreaseBytes = 4 - Remainder;
-                                    var NewSize = outScdFileSize + IncreaseBytes;
-                                    var PadNulls = NewSize - outScdFileSize;
+                                    var remainder = outScdFileSize % 4;
+                                    var increaseBytes = 4 - remainder;
+                                    var newSize = outScdFileSize + increaseBytes;
+                                    var padNulls = newSize - outScdFileSize;
 
                                     outScd.Seek(outScdFileSize, SeekOrigin.Begin);
-                                    for (int pad = 0; pad < PadNulls; pad++)
+                                    for (int pad = 0; pad < padNulls; pad++)
                                     {
                                         outScd.WriteByte(0);
                                     }
