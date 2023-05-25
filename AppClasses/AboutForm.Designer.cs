@@ -77,7 +77,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AboutWindow";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "About";
             ((System.ComponentModel.ISupportInitialize)(this.AboutPictureBox)).EndInit();
             this.ResumeLayout(false);
