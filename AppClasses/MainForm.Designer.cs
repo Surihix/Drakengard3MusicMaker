@@ -363,7 +363,7 @@
             this.VersionLabel.Name = "VersionLabel";
             this.VersionLabel.Size = new System.Drawing.Size(29, 15);
             this.VersionLabel.TabIndex = 13;
-            this.VersionLabel.Text = "v1.0";
+            this.VersionLabel.Text = "v1.2";
             // 
             // HelpLinkLabel
             // 
