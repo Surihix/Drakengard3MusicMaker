@@ -116,7 +116,7 @@ namespace Drakengard3MusicMaker.AppClasses
 
         private void Mp3BrowseBtn_Click(object sender, EventArgs e)
         {
-            OFDInitializer("MP3 Audio File", out OpenFileDialog mp3PathSelect, $"|{"*.mp3"}");
+            OFDInitializer("MP3 Audio File (*.mp3)", out OpenFileDialog mp3PathSelect, $"|{"*.mp3"}");
 
             if (mp3PathSelect.ShowDialog() == DialogResult.OK)
             {
@@ -135,7 +135,7 @@ namespace Drakengard3MusicMaker.AppClasses
 
         private void XXXBrowseBtn_Click(object sender, EventArgs e)
         {
-            OFDInitializer("XXX Audio File", out OpenFileDialog xxxPathSelect, $"|{"*.XXX"}");
+            OFDInitializer("XXX Audio File (*.XXX)", out OpenFileDialog xxxPathSelect, $"|{"*.XXX"}");
 
             if (xxxPathSelect.ShowDialog() == DialogResult.OK)
             {
@@ -154,13 +154,13 @@ namespace Drakengard3MusicMaker.AppClasses
 
         private void PS3TOCBrowseBtn_Click(object sender, EventArgs e)
         {
-            OFDInitializer("PS3TOC Text file", out OpenFileDialog tocPath_select, $"|{"*.txt"}");
+            OFDInitializer("PS3TOC Text file", out OpenFileDialog tocPath_select, $"|{"PS3TOC.TXT"}");
 
             if (tocPath_select.ShowDialog() == DialogResult.OK)
             {
-                var TOCfilePath = tocPath_select.FileName;
-                var TOCTxtBoxText = Path.GetFullPath($"{TOCfilePath}");
-                PS3TOCPathTxtBox.Text = TOCTxtBoxText;
+                var tocFilePath = tocPath_select.FileName;
+                var tocTxtBoxText = Path.GetFullPath($"{tocFilePath}");
+                PS3TOCPathTxtBox.Text = tocTxtBoxText;
 
                 EnableTools();
             }
