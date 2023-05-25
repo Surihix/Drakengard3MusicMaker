@@ -1,4 +1,4 @@
-﻿namespace Drakengard3MusicMaker
+﻿namespace Drakengard3MusicMaker.AppClasses
 {
     partial class MainForm
     {
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.Mp3PathTxtBox = new System.Windows.Forms.TextBox();
             this.XXXPathTxtBox = new System.Windows.Forms.TextBox();
             this.PS3TOCPathTxtBox = new System.Windows.Forms.TextBox();
@@ -390,7 +391,7 @@
             // 
             // AppImgPictureBox
             // 
-            this.AppImgPictureBox.BackgroundImage = global::Drakengard3MusicMaker.Properties.Resources.app_img;
+            this.AppImgPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AppImgPictureBox.BackgroundImage")));
             this.AppImgPictureBox.Location = new System.Drawing.Point(13, 13);
             this.AppImgPictureBox.Name = "AppImgPictureBox";
             this.AppImgPictureBox.Size = new System.Drawing.Size(556, 140);
@@ -419,6 +420,7 @@
             this.Controls.Add(this.Mp3PathTxtBox);
             this.Controls.Add(this.AppImgPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Drakengard 3 Music Maker";

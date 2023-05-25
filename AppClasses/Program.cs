@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Drakengard3MusicMaker
+namespace Drakengard3MusicMaker.AppClasses
 {
     internal static class Program
     {

@@ -1,4 +1,4 @@
-﻿namespace Drakengard3MusicMaker
+﻿namespace Drakengard3MusicMaker.AppClasses
 {
     partial class AboutWindow
     {
@@ -43,7 +43,7 @@
             this.AboutOKbutton.TabIndex = 1;
             this.AboutOKbutton.Text = "OK";
             this.AboutOKbutton.UseVisualStyleBackColor = true;
-            this.AboutOKbutton.Click += new System.EventHandler(this.button1_Click);
+            this.AboutOKbutton.Click += new System.EventHandler(this.AboutOKbutton_Click);
             // 
             // label1
             // 
@@ -57,7 +57,7 @@
             // 
             // AboutPictureBox
             // 
-            this.AboutPictureBox.BackgroundImage = global::Drakengard3MusicMaker.Properties.Resources.about_img;
+            this.AboutPictureBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AboutPictureBox.BackgroundImage")));
             this.AboutPictureBox.Location = new System.Drawing.Point(67, 14);
             this.AboutPictureBox.Name = "AboutPictureBox";
             this.AboutPictureBox.Size = new System.Drawing.Size(109, 109);
@@ -72,8 +72,10 @@
             this.Controls.Add(this.AboutPictureBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.AboutOKbutton);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AboutWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About";
