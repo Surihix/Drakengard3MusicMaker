@@ -6,8 +6,3 @@
 <br><br>The following versions of the game were tested:
 <br>**NPUB31251** - US PSN version (also with 1.01 update installed)
 <br>**NPEB01407** - EU PSN version (only with the 1.01 update installed)
-<br>
-## For developers
-The following additional packages were used for Big Endian reading and writing byte values:
-<br>**System.Memory** - https://www.nuget.org/packages/System.Memory/
-<br>**System.Buffers** - https://www.nuget.org/packages/System.Buffers/
