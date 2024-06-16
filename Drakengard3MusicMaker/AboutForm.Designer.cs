@@ -1,4 +1,4 @@
-﻿namespace Drakengard3MusicMaker.AppClasses
+﻿namespace Drakengard3MusicMaker
 {
     partial class AboutWindow
     {

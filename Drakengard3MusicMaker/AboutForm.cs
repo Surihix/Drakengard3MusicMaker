@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Drakengard3MusicMaker.AppClasses
+namespace Drakengard3MusicMaker
 {
     public partial class AboutWindow : Form
     {

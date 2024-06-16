@@ -39,22 +39,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
-    </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
-    </Reference>
     <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -65,26 +53,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppClasses\AboutForm.cs">
+    <Compile Include="Drakengard3MusicMaker\AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AppClasses\AboutForm.Designer.cs">
+    <Compile Include="Drakengard3MusicMaker\AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AppClasses\ProcessScd.cs" />
-    <Compile Include="AppClasses\ProcessToc.cs" />
-    <Compile Include="AppClasses\MainForm.cs">
+    <Compile Include="Drakengard3MusicMaker\Extensions\BinaryReaderHelpers.cs" />
+    <Compile Include="Drakengard3MusicMaker\Extensions\BinaryWriterHelpers.cs" />
+    <Compile Include="Drakengard3MusicMaker\Extensions\StreamHelpers.cs" />
+    <Compile Include="Drakengard3MusicMaker\ProcessSCD.cs" />
+    <Compile Include="Drakengard3MusicMaker\ProcessTOC.cs" />
+    <Compile Include="Drakengard3MusicMaker\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AppClasses\MainForm.Designer.cs">
+    <Compile Include="Drakengard3MusicMaker\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AppClasses\Program.cs" />
+    <Compile Include="Drakengard3MusicMaker\Program.cs" />
+    <Compile Include="Drakengard3MusicMaker\Support\SharedMethods.cs" />
+    <Compile Include="Drakengard3MusicMaker\Support\SharedVariables.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AppClasses\AboutForm.resx">
+    <EmbeddedResource Include="Drakengard3MusicMaker\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AppClasses\MainForm.resx">
+    <EmbeddedResource Include="Drakengard3MusicMaker\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -97,7 +90,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

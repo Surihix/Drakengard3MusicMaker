@@ -1,4 +1,4 @@
-﻿namespace Drakengard3MusicMaker.AppClasses
+﻿namespace Drakengard3MusicMaker
 {
     partial class MainForm
     {
@@ -363,7 +363,7 @@
             this.VersionLabel.Name = "VersionLabel";
             this.VersionLabel.Size = new System.Drawing.Size(29, 15);
             this.VersionLabel.TabIndex = 13;
-            this.VersionLabel.Text = "v1.2";
+            this.VersionLabel.Text = "v1.3";
             // 
             // HelpLinkLabel
             // 
