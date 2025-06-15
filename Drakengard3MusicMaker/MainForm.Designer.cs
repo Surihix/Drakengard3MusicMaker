@@ -66,6 +66,9 @@
             this.HelpLinkLabel = new System.Windows.Forms.LinkLabel();
             this.AboutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.AppImgPictureBox = new System.Windows.Forms.PictureBox();
+            this.TabControl = new System.Windows.Forms.TabControl();
+            this.singleTabPage = new System.Windows.Forms.TabPage();
+            this.batchTabPage = new System.Windows.Forms.TabPage();
             this.mp3SettingsGrpBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChannelCountNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SampleRateNumUpDown)).BeginInit();
@@ -75,35 +78,37 @@
             ((System.ComponentModel.ISupportInitialize)(this.LoopEndNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoopStartNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AppImgPictureBox)).BeginInit();
+            this.TabControl.SuspendLayout();
+            this.singleTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // Mp3PathTxtBox
             // 
-            this.Mp3PathTxtBox.Location = new System.Drawing.Point(12, 192);
+            this.Mp3PathTxtBox.Location = new System.Drawing.Point(10, 31);
             this.Mp3PathTxtBox.Name = "Mp3PathTxtBox";
-            this.Mp3PathTxtBox.Size = new System.Drawing.Size(488, 20);
+            this.Mp3PathTxtBox.Size = new System.Drawing.Size(459, 20);
             this.Mp3PathTxtBox.TabIndex = 1;
             this.Mp3PathTxtBox.TextChanged += new System.EventHandler(this.Mp3PathTxtBox_TextChanged);
             // 
             // XXXPathTxtBox
             // 
-            this.XXXPathTxtBox.Location = new System.Drawing.Point(11, 242);
+            this.XXXPathTxtBox.Location = new System.Drawing.Point(10, 81);
             this.XXXPathTxtBox.Name = "XXXPathTxtBox";
-            this.XXXPathTxtBox.Size = new System.Drawing.Size(488, 20);
+            this.XXXPathTxtBox.Size = new System.Drawing.Size(459, 20);
             this.XXXPathTxtBox.TabIndex = 2;
             this.XXXPathTxtBox.TextChanged += new System.EventHandler(this.XXXPathTxtBox_TextChanged);
             // 
             // PS3TOCPathTxtBox
             // 
-            this.PS3TOCPathTxtBox.Location = new System.Drawing.Point(11, 292);
+            this.PS3TOCPathTxtBox.Location = new System.Drawing.Point(10, 131);
             this.PS3TOCPathTxtBox.Name = "PS3TOCPathTxtBox";
-            this.PS3TOCPathTxtBox.Size = new System.Drawing.Size(488, 20);
+            this.PS3TOCPathTxtBox.Size = new System.Drawing.Size(459, 20);
             this.PS3TOCPathTxtBox.TabIndex = 3;
             this.PS3TOCPathTxtBox.TextChanged += new System.EventHandler(this.PS3TOCPathTxtBox_TextChanged);
             // 
             // Mp3BrowseBtn
             // 
-            this.Mp3BrowseBtn.Location = new System.Drawing.Point(506, 191);
+            this.Mp3BrowseBtn.Location = new System.Drawing.Point(475, 31);
             this.Mp3BrowseBtn.Name = "Mp3BrowseBtn";
             this.Mp3BrowseBtn.Size = new System.Drawing.Size(62, 23);
             this.Mp3BrowseBtn.TabIndex = 4;
@@ -113,7 +118,7 @@
             // 
             // XXXBrowseBtn
             // 
-            this.XXXBrowseBtn.Location = new System.Drawing.Point(506, 241);
+            this.XXXBrowseBtn.Location = new System.Drawing.Point(475, 81);
             this.XXXBrowseBtn.Name = "XXXBrowseBtn";
             this.XXXBrowseBtn.Size = new System.Drawing.Size(62, 23);
             this.XXXBrowseBtn.TabIndex = 5;
@@ -123,7 +128,7 @@
             // 
             // PS3TOCBrowseBtn
             // 
-            this.PS3TOCBrowseBtn.Location = new System.Drawing.Point(506, 291);
+            this.PS3TOCBrowseBtn.Location = new System.Drawing.Point(475, 131);
             this.PS3TOCBrowseBtn.Name = "PS3TOCBrowseBtn";
             this.PS3TOCBrowseBtn.Size = new System.Drawing.Size(62, 23);
             this.PS3TOCBrowseBtn.TabIndex = 6;
@@ -137,7 +142,7 @@
             this.mp3SettingsGrpBox.Controls.Add(this.SampleRateLabel);
             this.mp3SettingsGrpBox.Controls.Add(this.ChannelCountNumUpDown);
             this.mp3SettingsGrpBox.Controls.Add(this.SampleRateNumUpDown);
-            this.mp3SettingsGrpBox.Location = new System.Drawing.Point(12, 364);
+            this.mp3SettingsGrpBox.Location = new System.Drawing.Point(10, 177);
             this.mp3SettingsGrpBox.Name = "mp3SettingsGrpBox";
             this.mp3SettingsGrpBox.Size = new System.Drawing.Size(261, 99);
             this.mp3SettingsGrpBox.TabIndex = 7;
@@ -205,9 +210,9 @@
             this.GameAudioSettingsGrpBox.Controls.Add(this.OgVolRadioButton);
             this.GameAudioSettingsGrpBox.Controls.Add(this.VolSlider);
             this.GameAudioSettingsGrpBox.Controls.Add(this.ExperimentalGrpBox);
-            this.GameAudioSettingsGrpBox.Location = new System.Drawing.Point(12, 481);
+            this.GameAudioSettingsGrpBox.Location = new System.Drawing.Point(10, 295);
             this.GameAudioSettingsGrpBox.Name = "GameAudioSettingsGrpBox";
-            this.GameAudioSettingsGrpBox.Size = new System.Drawing.Size(555, 129);
+            this.GameAudioSettingsGrpBox.Size = new System.Drawing.Size(527, 129);
             this.GameAudioSettingsGrpBox.TabIndex = 8;
             this.GameAudioSettingsGrpBox.TabStop = false;
             this.GameAudioSettingsGrpBox.Text = "Game Audio Settings :";
@@ -215,7 +220,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 99);
+            this.label2.Location = new System.Drawing.Point(21, 98);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(145, 13);
             this.label2.TabIndex = 4;
@@ -224,7 +229,7 @@
             // CustomVolRadioButton
             // 
             this.CustomVolRadioButton.AutoSize = true;
-            this.CustomVolRadioButton.Location = new System.Drawing.Point(48, 46);
+            this.CustomVolRadioButton.Location = new System.Drawing.Point(13, 47);
             this.CustomVolRadioButton.Name = "CustomVolRadioButton";
             this.CustomVolRadioButton.Size = new System.Drawing.Size(117, 17);
             this.CustomVolRadioButton.TabIndex = 3;
@@ -237,7 +242,7 @@
             // OgVolRadioButton
             // 
             this.OgVolRadioButton.AutoSize = true;
-            this.OgVolRadioButton.Location = new System.Drawing.Point(48, 22);
+            this.OgVolRadioButton.Location = new System.Drawing.Point(13, 24);
             this.OgVolRadioButton.Name = "OgVolRadioButton";
             this.OgVolRadioButton.Size = new System.Drawing.Size(121, 17);
             this.OgVolRadioButton.TabIndex = 2;
@@ -249,8 +254,9 @@
             // 
             // VolSlider
             // 
+            this.VolSlider.BackColor = System.Drawing.SystemColors.Control;
             this.VolSlider.LargeChange = 1;
-            this.VolSlider.Location = new System.Drawing.Point(34, 71);
+            this.VolSlider.Location = new System.Drawing.Point(13, 70);
             this.VolSlider.Maximum = 6;
             this.VolSlider.Name = "VolSlider";
             this.VolSlider.Size = new System.Drawing.Size(161, 45);
@@ -262,7 +268,7 @@
             this.ExperimentalGrpBox.Controls.Add(this.LoopStartLabel);
             this.ExperimentalGrpBox.Controls.Add(this.LoopEndNumUpDown);
             this.ExperimentalGrpBox.Controls.Add(this.LoopStartNumUpDown);
-            this.ExperimentalGrpBox.Location = new System.Drawing.Point(305, 19);
+            this.ExperimentalGrpBox.Location = new System.Drawing.Point(267, 19);
             this.ExperimentalGrpBox.Name = "ExperimentalGrpBox";
             this.ExperimentalGrpBox.Size = new System.Drawing.Size(235, 88);
             this.ExperimentalGrpBox.TabIndex = 0;
@@ -316,7 +322,7 @@
             // ConvertAudiobtn
             // 
             this.ConvertAudiobtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConvertAudiobtn.Location = new System.Drawing.Point(396, 396);
+            this.ConvertAudiobtn.Location = new System.Drawing.Point(353, 206);
             this.ConvertAudiobtn.Name = "ConvertAudiobtn";
             this.ConvertAudiobtn.Size = new System.Drawing.Size(115, 42);
             this.ConvertAudiobtn.TabIndex = 9;
@@ -329,7 +335,7 @@
             // 
             this.Mp3PathLabel.AutoSize = true;
             this.Mp3PathLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Mp3PathLabel.Location = new System.Drawing.Point(12, 174);
+            this.Mp3PathLabel.Location = new System.Drawing.Point(7, 13);
             this.Mp3PathLabel.Name = "Mp3PathLabel";
             this.Mp3PathLabel.Size = new System.Drawing.Size(149, 15);
             this.Mp3PathLabel.TabIndex = 10;
@@ -339,7 +345,7 @@
             // 
             this.XXXPathLabel.AutoSize = true;
             this.XXXPathLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.XXXPathLabel.Location = new System.Drawing.Point(12, 224);
+            this.XXXPathLabel.Location = new System.Drawing.Point(7, 63);
             this.XXXPathLabel.Name = "XXXPathLabel";
             this.XXXPathLabel.Size = new System.Drawing.Size(181, 15);
             this.XXXPathLabel.TabIndex = 11;
@@ -349,7 +355,7 @@
             // 
             this.PS3TOCPathLabel.AutoSize = true;
             this.PS3TOCPathLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PS3TOCPathLabel.Location = new System.Drawing.Point(12, 274);
+            this.PS3TOCPathLabel.Location = new System.Drawing.Point(7, 113);
             this.PS3TOCPathLabel.Name = "PS3TOCPathLabel";
             this.PS3TOCPathLabel.Size = new System.Drawing.Size(113, 15);
             this.PS3TOCPathLabel.TabIndex = 12;
@@ -359,17 +365,17 @@
             // 
             this.VersionLabel.AutoSize = true;
             this.VersionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VersionLabel.Location = new System.Drawing.Point(278, 639);
+            this.VersionLabel.Location = new System.Drawing.Point(278, 645);
             this.VersionLabel.Name = "VersionLabel";
             this.VersionLabel.Size = new System.Drawing.Size(29, 15);
             this.VersionLabel.TabIndex = 13;
-            this.VersionLabel.Text = "v1.3";
+            this.VersionLabel.Text = "v1.4";
             // 
             // HelpLinkLabel
             // 
             this.HelpLinkLabel.AutoSize = true;
             this.HelpLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HelpLinkLabel.Location = new System.Drawing.Point(533, 639);
+            this.HelpLinkLabel.Location = new System.Drawing.Point(529, 645);
             this.HelpLinkLabel.Name = "HelpLinkLabel";
             this.HelpLinkLabel.Size = new System.Drawing.Size(36, 16);
             this.HelpLinkLabel.TabIndex = 14;
@@ -381,7 +387,7 @@
             // 
             this.AboutLinkLabel.AutoSize = true;
             this.AboutLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AboutLinkLabel.Location = new System.Drawing.Point(10, 639);
+            this.AboutLinkLabel.Location = new System.Drawing.Point(13, 645);
             this.AboutLinkLabel.Name = "AboutLinkLabel";
             this.AboutLinkLabel.Size = new System.Drawing.Size(42, 16);
             this.AboutLinkLabel.TabIndex = 15;
@@ -398,26 +404,57 @@
             this.AppImgPictureBox.TabIndex = 0;
             this.AppImgPictureBox.TabStop = false;
             // 
+            // TabControl
+            // 
+            this.TabControl.Controls.Add(this.singleTabPage);
+            this.TabControl.Controls.Add(this.batchTabPage);
+            this.TabControl.Location = new System.Drawing.Point(12, 169);
+            this.TabControl.Name = "TabControl";
+            this.TabControl.SelectedIndex = 0;
+            this.TabControl.Size = new System.Drawing.Size(557, 464);
+            this.TabControl.TabIndex = 16;
+            // 
+            // singleTabPage
+            // 
+            this.singleTabPage.BackColor = System.Drawing.Color.Transparent;
+            this.singleTabPage.Controls.Add(this.Mp3PathLabel);
+            this.singleTabPage.Controls.Add(this.Mp3PathTxtBox);
+            this.singleTabPage.Controls.Add(this.XXXPathTxtBox);
+            this.singleTabPage.Controls.Add(this.PS3TOCPathTxtBox);
+            this.singleTabPage.Controls.Add(this.GameAudioSettingsGrpBox);
+            this.singleTabPage.Controls.Add(this.ConvertAudiobtn);
+            this.singleTabPage.Controls.Add(this.PS3TOCPathLabel);
+            this.singleTabPage.Controls.Add(this.Mp3BrowseBtn);
+            this.singleTabPage.Controls.Add(this.mp3SettingsGrpBox);
+            this.singleTabPage.Controls.Add(this.XXXPathLabel);
+            this.singleTabPage.Controls.Add(this.XXXBrowseBtn);
+            this.singleTabPage.Controls.Add(this.PS3TOCBrowseBtn);
+            this.singleTabPage.Location = new System.Drawing.Point(4, 22);
+            this.singleTabPage.Name = "singleTabPage";
+            this.singleTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.singleTabPage.Size = new System.Drawing.Size(549, 438);
+            this.singleTabPage.TabIndex = 0;
+            this.singleTabPage.Text = "Single Mode";
+            // 
+            // batchTabPage
+            // 
+            this.batchTabPage.Location = new System.Drawing.Point(4, 22);
+            this.batchTabPage.Name = "batchTabPage";
+            this.batchTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.batchTabPage.Size = new System.Drawing.Size(549, 438);
+            this.batchTabPage.TabIndex = 1;
+            this.batchTabPage.Text = "Batch Mode";
+            this.batchTabPage.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 661);
+            this.ClientSize = new System.Drawing.Size(580, 675);
+            this.Controls.Add(this.TabControl);
             this.Controls.Add(this.AboutLinkLabel);
             this.Controls.Add(this.HelpLinkLabel);
             this.Controls.Add(this.VersionLabel);
-            this.Controls.Add(this.PS3TOCPathLabel);
-            this.Controls.Add(this.XXXPathLabel);
-            this.Controls.Add(this.Mp3PathLabel);
-            this.Controls.Add(this.ConvertAudiobtn);
-            this.Controls.Add(this.GameAudioSettingsGrpBox);
-            this.Controls.Add(this.mp3SettingsGrpBox);
-            this.Controls.Add(this.PS3TOCBrowseBtn);
-            this.Controls.Add(this.XXXBrowseBtn);
-            this.Controls.Add(this.Mp3BrowseBtn);
-            this.Controls.Add(this.PS3TOCPathTxtBox);
-            this.Controls.Add(this.XXXPathTxtBox);
-            this.Controls.Add(this.Mp3PathTxtBox);
             this.Controls.Add(this.AppImgPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -436,6 +473,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.LoopEndNumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoopStartNumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AppImgPictureBox)).EndInit();
+            this.TabControl.ResumeLayout(false);
+            this.singleTabPage.ResumeLayout(false);
+            this.singleTabPage.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -479,6 +519,9 @@
         private System.Windows.Forms.ToolTip LoopStartToolTip;
         private System.Windows.Forms.LinkLabel HelpLinkLabel;
         private System.Windows.Forms.LinkLabel AboutLinkLabel;
+        private System.Windows.Forms.TabControl TabControl;
+        private System.Windows.Forms.TabPage singleTabPage;
+        private System.Windows.Forms.TabPage batchTabPage;
     }
 }
 
