@@ -59,6 +59,7 @@
     <Compile Include="Drakengard3MusicMaker\AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Drakengard3MusicMaker\AppSettings.cs" />
     <Compile Include="Drakengard3MusicMaker\Extensions\BinaryReaderHelpers.cs" />
     <Compile Include="Drakengard3MusicMaker\Extensions\BinaryWriterHelpers.cs" />
     <Compile Include="Drakengard3MusicMaker\Extensions\StreamHelpers.cs" />
@@ -105,6 +106,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app_icon.ico" />
+    <Content Include="external files\AppHelp.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>set helpTxt=$(SolutionDir)external files\AppHelp.txt
+
+echo %25helpTxt%25
+
+if exist "%25helpTxt%25" copy "%25helpTxt%25" "$(TargetDir)AppHelp.txt"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

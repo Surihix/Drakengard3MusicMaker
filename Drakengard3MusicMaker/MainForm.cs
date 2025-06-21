@@ -18,65 +18,45 @@ namespace Drakengard3MusicMaker
 
             OgVolRadioButton.Checked = true;
             SampleRateNumUpDown.Value = 44100;
-
-            DisableAudiotools();
         }
 
 
         private void Mp3BrowseBtn_Click(object sender, EventArgs e)
         {
-            OFDInitializer("MP3 Audio File (*.mp3)", out OpenFileDialog mp3PathSelect, $"|{"*.mp3"}");
+            OFDInitializer("MP3 Audio File (*.mp3)", out OpenFileDialog mp3PathSelect, "|*.mp3");
 
             if (mp3PathSelect.ShowDialog() == DialogResult.OK)
             {
                 var mp3filePath = mp3PathSelect.FileName;
                 var mp3TxtBoxText = Path.GetFullPath($"{mp3filePath}");
                 Mp3PathTxtBox.Text = mp3TxtBoxText;
-
-                EnableAudiotools();
             }
-        }
-        private void Mp3PathTxtBox_TextChanged(object sender, EventArgs e)
-        {
-            EnableAudiotools();
         }
 
 
         private void XXXBrowseBtn_Click(object sender, EventArgs e)
         {
-            OFDInitializer("XXX Audio File (*.XXX)", out OpenFileDialog xxxPathSelect, $"|{"*.XXX"}");
+            OFDInitializer("XXX Audio File (*.XXX)", out OpenFileDialog xxxPathSelect, "|*.XXX");
 
             if (xxxPathSelect.ShowDialog() == DialogResult.OK)
             {
                 var xxxFilePath = xxxPathSelect.FileName;
                 var xxxTxtBoxText = Path.GetFullPath($"{xxxFilePath}");
                 XXXPathTxtBox.Text = xxxTxtBoxText;
-
-                EnableAudiotools();
             }
-        }
-        private void XXXPathTxtBox_TextChanged(object sender, EventArgs e)
-        {
-            EnableAudiotools();
         }
 
 
         private void PS3TOCBrowseBtn_Click(object sender, EventArgs e)
         {
-            OFDInitializer("PS3TOC Text file", out OpenFileDialog tocPath_select, $"|{"PS3TOC.TXT"}");
+            OFDInitializer("PS3TOC Text file", out OpenFileDialog tocPath_select, "|PS3TOC.TXT");
 
             if (tocPath_select.ShowDialog() == DialogResult.OK)
             {
                 var tocFilePath = tocPath_select.FileName;
                 var tocTxtBoxText = Path.GetFullPath($"{tocFilePath}");
                 PS3TOCPathTxtBox.Text = tocTxtBoxText;
-
-                EnableAudiotools();
             }
-        }
-        private void PS3TOCPathTxtBox_TextChanged(object sender, EventArgs e)
-        {
-            EnableAudiotools();
         }
 
 
@@ -87,24 +67,23 @@ namespace Drakengard3MusicMaker
                 ConvertAudiobtn.Text = "Converting....";
                 EnableDisableControls(false);
 
-                bool isConvertOk = File.Exists($"{Mp3PathTxtBox.Text}") && File.Exists($"{XXXPathTxtBox.Text}") && File.Exists($"{PS3TOCPathTxtBox.Text}");
+                var isConvertOk = File.Exists($"{Mp3PathTxtBox.Text}") && File.Exists($"{XXXPathTxtBox.Text}") && File.Exists($"{PS3TOCPathTxtBox.Text}");
 
                 if (isConvertOk)
                 {
-                    ProcessSCD.OutMp3File = Mp3PathTxtBox.Text;
-                    ProcessSCD.Mp3SampleRate = SampleRateNumUpDown.Value;
-                    ProcessSCD.Mp3ChannelCount = ChannelCountNumUpDown.Value;
-                    ProcessSCD.Mp3LoopStart = LoopStartNumUpDown.Value;
-                    ProcessSCD.Mp3LoopEnd = LoopEndNumUpDown.Value;
-                    ProcessSCD.CustomVolumeButtonChecked = CustomVolRadioButton.Checked;
-                    ProcessSCD.VolumeSliderValue = VolSlider.Value;
-
-                    ProcessSCD.ConvertAudio(XXXPathTxtBox.Text);
-
-                    if (SharedVariables.IsSCDvalid)
+                    var appSettings = new AppSettings()
                     {
-                        ProcessTOC.EditText(PS3TOCPathTxtBox.Text, Path.GetFileName(XXXPathTxtBox.Text));
-                    }
+                        OutMp3File = Mp3PathTxtBox.Text,
+                        Mp3SampleRate = SampleRateNumUpDown.Value,
+                        Mp3ChannelCount = ChannelCountNumUpDown.Value,
+                        Mp3LoopStart = LoopStartNumUpDown.Value,
+                        Mp3LoopEnd = LoopEndNumUpDown.Value,
+                        CustomVolumeButtonChecked = CustomVolRadioButton.Checked,
+                        VolumeSliderValue = VolSlider.Value
+                    };
+
+                    ProcessSCD.ConvertAudio(XXXPathTxtBox.Text, appSettings);
+                    ProcessTOC.SingleModeEdit(PS3TOCPathTxtBox.Text, Path.GetFileName(XXXPathTxtBox.Text));
 
                     ConvertAudiobtn.Text = "Convert Audio";
                     EnableDisableControls(true);
@@ -118,48 +97,11 @@ namespace Drakengard3MusicMaker
             }
             catch (Exception ex)
             {
-                SharedMethods.AppMsgBox("" + ex, "Error", MessageBoxIcon.Error);
-                ConvertAudiobtn.Text = "Convert Audio";
-                EnableDisableControls(true);
-            }
-        }
-
-
-        private void DisableAudiotools()
-        {
-            SampleRateNumUpDown.Enabled = false;
-            ChannelCountNumUpDown.Enabled = false;
-            ConvertAudiobtn.Enabled = false;
-            OgVolRadioButton.Enabled = false;
-            CustomVolRadioButton.Enabled = false;
-            VolSlider.Enabled = false;
-            LoopStartNumUpDown.Enabled = false;
-            LoopEndNumUpDown.Enabled = false;
-        }
-
-
-        private void EnableAudiotools()
-        {
-            if (!string.IsNullOrEmpty(Mp3PathTxtBox.Text) && !string.IsNullOrEmpty(XXXPathTxtBox.Text) && !string.IsNullOrEmpty(PS3TOCPathTxtBox.Text))
-            {
-                if (File.Exists($"{Mp3PathTxtBox.Text}") && File.Exists($"{XXXPathTxtBox.Text}") && File.Exists($"{PS3TOCPathTxtBox.Text}"))
+                if (ex.Message != "Handled")
                 {
-                    SampleRateNumUpDown.Enabled = true;
-                    ChannelCountNumUpDown.Enabled = true;
-                    ConvertAudiobtn.Enabled = true;
-                    OgVolRadioButton.Enabled = true;
-                    CustomVolRadioButton.Enabled = true;
-                    LoopStartNumUpDown.Enabled = true;
-                    LoopEndNumUpDown.Enabled = true;
-
-                    if (CustomVolRadioButton.Checked.Equals(true))
-                    {
-                        VolSlider.Enabled = true;
-                    }
-                }
-                else
-                {
-                    DisableAudiotools();
+                    SharedMethods.AppMsgBox("" + ex, "Error", MessageBoxIcon.Error);
+                    ConvertAudiobtn.Text = "Convert Audio";
+                    EnableDisableControls(true);
                 }
             }
         }

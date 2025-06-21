@@ -69,6 +69,15 @@
             this.TabControl = new System.Windows.Forms.TabControl();
             this.singleTabPage = new System.Windows.Forms.TabPage();
             this.batchTabPage = new System.Windows.Forms.TabPage();
+            this.Mp3DirLabel = new System.Windows.Forms.Label();
+            this.XXXDirLabel = new System.Windows.Forms.Label();
+            this.PS3TOCPathLabel2 = new System.Windows.Forms.Label();
+            this.Mp3DirTxtBox = new System.Windows.Forms.TextBox();
+            this.XXXDirTxtBox = new System.Windows.Forms.TextBox();
+            this.PS3TOCPathTxtBox2 = new System.Windows.Forms.TextBox();
+            this.Mp3BrowseDirBtn = new System.Windows.Forms.Button();
+            this.XXXBrowseDirBtn = new System.Windows.Forms.Button();
+            this.PS3TOCBrowseBtn2 = new System.Windows.Forms.Button();
             this.mp3SettingsGrpBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChannelCountNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SampleRateNumUpDown)).BeginInit();
@@ -80,6 +89,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AppImgPictureBox)).BeginInit();
             this.TabControl.SuspendLayout();
             this.singleTabPage.SuspendLayout();
+            this.batchTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // Mp3PathTxtBox
@@ -88,7 +98,6 @@
             this.Mp3PathTxtBox.Name = "Mp3PathTxtBox";
             this.Mp3PathTxtBox.Size = new System.Drawing.Size(459, 20);
             this.Mp3PathTxtBox.TabIndex = 1;
-            this.Mp3PathTxtBox.TextChanged += new System.EventHandler(this.Mp3PathTxtBox_TextChanged);
             // 
             // XXXPathTxtBox
             // 
@@ -96,7 +105,6 @@
             this.XXXPathTxtBox.Name = "XXXPathTxtBox";
             this.XXXPathTxtBox.Size = new System.Drawing.Size(459, 20);
             this.XXXPathTxtBox.TabIndex = 2;
-            this.XXXPathTxtBox.TextChanged += new System.EventHandler(this.XXXPathTxtBox_TextChanged);
             // 
             // PS3TOCPathTxtBox
             // 
@@ -104,7 +112,6 @@
             this.PS3TOCPathTxtBox.Name = "PS3TOCPathTxtBox";
             this.PS3TOCPathTxtBox.Size = new System.Drawing.Size(459, 20);
             this.PS3TOCPathTxtBox.TabIndex = 3;
-            this.PS3TOCPathTxtBox.TextChanged += new System.EventHandler(this.PS3TOCPathTxtBox_TextChanged);
             // 
             // Mp3BrowseBtn
             // 
@@ -438,13 +445,100 @@
             // 
             // batchTabPage
             // 
+            this.batchTabPage.BackColor = System.Drawing.Color.Transparent;
+            this.batchTabPage.Controls.Add(this.PS3TOCBrowseBtn2);
+            this.batchTabPage.Controls.Add(this.XXXBrowseDirBtn);
+            this.batchTabPage.Controls.Add(this.Mp3BrowseDirBtn);
+            this.batchTabPage.Controls.Add(this.PS3TOCPathTxtBox2);
+            this.batchTabPage.Controls.Add(this.XXXDirTxtBox);
+            this.batchTabPage.Controls.Add(this.Mp3DirTxtBox);
+            this.batchTabPage.Controls.Add(this.PS3TOCPathLabel2);
+            this.batchTabPage.Controls.Add(this.XXXDirLabel);
+            this.batchTabPage.Controls.Add(this.Mp3DirLabel);
             this.batchTabPage.Location = new System.Drawing.Point(4, 22);
             this.batchTabPage.Name = "batchTabPage";
             this.batchTabPage.Padding = new System.Windows.Forms.Padding(3);
             this.batchTabPage.Size = new System.Drawing.Size(549, 438);
             this.batchTabPage.TabIndex = 1;
             this.batchTabPage.Text = "Batch Mode";
-            this.batchTabPage.UseVisualStyleBackColor = true;
+            // 
+            // Mp3DirLabel
+            // 
+            this.Mp3DirLabel.AutoSize = true;
+            this.Mp3DirLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Mp3DirLabel.Location = new System.Drawing.Point(7, 13);
+            this.Mp3DirLabel.Name = "Mp3DirLabel";
+            this.Mp3DirLabel.Size = new System.Drawing.Size(263, 15);
+            this.Mp3DirLabel.TabIndex = 11;
+            this.Mp3DirLabel.Text = "Select directory containing mp3 files to encode:";
+            // 
+            // XXXDirLabel
+            // 
+            this.XXXDirLabel.AutoSize = true;
+            this.XXXDirLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XXXDirLabel.Location = new System.Drawing.Point(7, 63);
+            this.XXXDirLabel.Name = "XXXDirLabel";
+            this.XXXDirLabel.Size = new System.Drawing.Size(296, 15);
+            this.XXXDirLabel.TabIndex = 12;
+            this.XXXDirLabel.Text = "Select directory containing XXX audio files to replace:";
+            // 
+            // PS3TOCPathLabel2
+            // 
+            this.PS3TOCPathLabel2.AutoSize = true;
+            this.PS3TOCPathLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PS3TOCPathLabel2.Location = new System.Drawing.Point(7, 113);
+            this.PS3TOCPathLabel2.Name = "PS3TOCPathLabel2";
+            this.PS3TOCPathLabel2.Size = new System.Drawing.Size(113, 15);
+            this.PS3TOCPathLabel2.TabIndex = 13;
+            this.PS3TOCPathLabel2.Text = "Select PS3TOC file:";
+            // 
+            // Mp3DirTxtBox
+            // 
+            this.Mp3DirTxtBox.Location = new System.Drawing.Point(10, 31);
+            this.Mp3DirTxtBox.Name = "Mp3DirTxtBox";
+            this.Mp3DirTxtBox.Size = new System.Drawing.Size(459, 20);
+            this.Mp3DirTxtBox.TabIndex = 14;
+            // 
+            // XXXDirTxtBox
+            // 
+            this.XXXDirTxtBox.Location = new System.Drawing.Point(10, 81);
+            this.XXXDirTxtBox.Name = "XXXDirTxtBox";
+            this.XXXDirTxtBox.Size = new System.Drawing.Size(459, 20);
+            this.XXXDirTxtBox.TabIndex = 15;
+            // 
+            // PS3TOCPathTxtBox2
+            // 
+            this.PS3TOCPathTxtBox2.Location = new System.Drawing.Point(10, 131);
+            this.PS3TOCPathTxtBox2.Name = "PS3TOCPathTxtBox2";
+            this.PS3TOCPathTxtBox2.Size = new System.Drawing.Size(459, 20);
+            this.PS3TOCPathTxtBox2.TabIndex = 16;
+            // 
+            // Mp3BrowseDirBtn
+            // 
+            this.Mp3BrowseDirBtn.Location = new System.Drawing.Point(475, 31);
+            this.Mp3BrowseDirBtn.Name = "Mp3BrowseDirBtn";
+            this.Mp3BrowseDirBtn.Size = new System.Drawing.Size(62, 23);
+            this.Mp3BrowseDirBtn.TabIndex = 17;
+            this.Mp3BrowseDirBtn.Text = "Browse...";
+            this.Mp3BrowseDirBtn.UseVisualStyleBackColor = true;
+            // 
+            // XXXBrowseDirBtn
+            // 
+            this.XXXBrowseDirBtn.Location = new System.Drawing.Point(475, 81);
+            this.XXXBrowseDirBtn.Name = "XXXBrowseDirBtn";
+            this.XXXBrowseDirBtn.Size = new System.Drawing.Size(62, 23);
+            this.XXXBrowseDirBtn.TabIndex = 18;
+            this.XXXBrowseDirBtn.Text = "Browse...";
+            this.XXXBrowseDirBtn.UseVisualStyleBackColor = true;
+            // 
+            // PS3TOCBrowseBtn2
+            // 
+            this.PS3TOCBrowseBtn2.Location = new System.Drawing.Point(475, 131);
+            this.PS3TOCBrowseBtn2.Name = "PS3TOCBrowseBtn2";
+            this.PS3TOCBrowseBtn2.Size = new System.Drawing.Size(62, 23);
+            this.PS3TOCBrowseBtn2.TabIndex = 19;
+            this.PS3TOCBrowseBtn2.Text = "Browse...";
+            this.PS3TOCBrowseBtn2.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -476,6 +570,8 @@
             this.TabControl.ResumeLayout(false);
             this.singleTabPage.ResumeLayout(false);
             this.singleTabPage.PerformLayout();
+            this.batchTabPage.ResumeLayout(false);
+            this.batchTabPage.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -522,6 +618,15 @@
         private System.Windows.Forms.TabControl TabControl;
         private System.Windows.Forms.TabPage singleTabPage;
         private System.Windows.Forms.TabPage batchTabPage;
+        private System.Windows.Forms.TextBox PS3TOCPathTxtBox2;
+        private System.Windows.Forms.TextBox XXXDirTxtBox;
+        private System.Windows.Forms.TextBox Mp3DirTxtBox;
+        private System.Windows.Forms.Label PS3TOCPathLabel2;
+        private System.Windows.Forms.Label XXXDirLabel;
+        private System.Windows.Forms.Label Mp3DirLabel;
+        private System.Windows.Forms.Button PS3TOCBrowseBtn2;
+        private System.Windows.Forms.Button XXXBrowseDirBtn;
+        private System.Windows.Forms.Button Mp3BrowseDirBtn;
     }
 }
 

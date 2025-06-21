@@ -8,7 +8,7 @@ namespace Drakengard3MusicMaker
 {
     internal class ProcessTOC
     {
-        public static void EditText(string tocFile, string outSCDname)
+        public static void SingleModeEdit(string tocFile, string outSCDname)
         {
             var totalEntries = File.ReadLines(tocFile).Count();
 
@@ -26,7 +26,7 @@ namespace Drakengard3MusicMaker
                         for (int i = 0; i < totalEntries; i++)
                         {
                             var parsedLine = tocReader.ReadLine();
-                            string[] fileInfo = parsedLine.Split(' ');
+                            var fileInfo = parsedLine.Split(' ');
                             var fileSize = Convert.ToUInt32(fileInfo[0]);
                             var size2 = Convert.ToUInt32(fileInfo[1]);
                             var filePath = fileInfo[2];
@@ -53,6 +53,12 @@ namespace Drakengard3MusicMaker
                     }
                 }
             }
+        }
+
+
+        public static void BatchModeEdit(string tocFile)
+        {
+
         }
     }
 }

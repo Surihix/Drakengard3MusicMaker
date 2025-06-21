@@ -10,6 +10,14 @@ namespace Drakengard3MusicMaker.Support
             MessageBox.Show(msgTxt, msgHeader, MessageBoxButtons.OK, msgType);
         }
 
+
+        public static void ErrorStop(string errorMsg)
+        {
+            AppMsgBox(errorMsg, "Error", MessageBoxIcon.Error);
+            throw new System.Exception("Handled");
+        }
+
+
         public static void IfFileExistDel(string fileName)
         {
             if (File.Exists(fileName))
