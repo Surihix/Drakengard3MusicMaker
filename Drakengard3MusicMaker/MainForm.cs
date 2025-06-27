@@ -17,7 +17,7 @@ namespace Drakengard3MusicMaker
             }
 
             OgVolRadioButton.Checked = true;
-            SampleRateNumUpDown.Value = 44100;
+            SampleRateNumUpDown.Value = 0;
         }
 
 
@@ -60,6 +60,47 @@ namespace Drakengard3MusicMaker
         }
 
 
+        private void LoadFromMp3btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LoadFromMp3btn.Text = "Loading....";
+                EnableDisableControls(false);
+
+                SampleRateNumUpDown.Value = 0;
+                ChannelCountNumUpDown.Value = 1;
+
+                var isLoadOk = File.Exists($"{Mp3PathTxtBox.Text}");
+
+                if (isLoadOk)
+                {
+                    var mp3Settings = ProcessMp3.GetMp3Info(Mp3PathTxtBox.Text);
+                    SampleRateNumUpDown.Value = mp3Settings.SampleRate;
+                    ChannelCountNumUpDown.Value = mp3Settings.ChannelCount;
+
+                    LoadFromMp3btn.Text = "Load from Mp3";
+                    EnableDisableControls(true);
+                }
+                else
+                {
+                    SharedMethods.AppMsgBox("Mp3 file path isn't set correctly or the file does not exist.\nPlease set the correct filepath for the mp3 file before trying this option.", "Error", MessageBoxIcon.Error);
+
+                    LoadFromMp3btn.Text = "Load from Mp3";
+                    EnableDisableControls(true);
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message != "Handled")
+                {
+                    SharedMethods.AppMsgBox("" + ex, "Error", MessageBoxIcon.Error);
+                    ConvertAudiobtn.Text = "Convert Audio";
+                    EnableDisableControls(true);
+                }
+            }
+        }
+
+
         private void ConvertAudiobtn_Click(object sender, EventArgs e)
         {
             try
@@ -92,7 +133,6 @@ namespace Drakengard3MusicMaker
                 {
                     ConvertAudiobtn.Text = "Convert Audio";
                     EnableDisableControls(true);
-                    SharedMethods.AppMsgBox("One or more file paths aren't set correctly or the files themselves does not exist.\nPlease set the correct filepaths for all of the files before trying to convert them.", "Error", MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)

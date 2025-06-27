@@ -63,6 +63,8 @@
     <Compile Include="Drakengard3MusicMaker\Extensions\BinaryReaderHelpers.cs" />
     <Compile Include="Drakengard3MusicMaker\Extensions\BinaryWriterHelpers.cs" />
     <Compile Include="Drakengard3MusicMaker\Extensions\StreamHelpers.cs" />
+    <Compile Include="Drakengard3MusicMaker\Mp3Settings.cs" />
+    <Compile Include="Drakengard3MusicMaker\ProcessMp3.cs" />
     <Compile Include="Drakengard3MusicMaker\ProcessSCD.cs" />
     <Compile Include="Drakengard3MusicMaker\ProcessTOC.cs" />
     <Compile Include="Drakengard3MusicMaker\MainForm.cs">
