@@ -2,14 +2,26 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Drakengard3MusicMaker
 {
     internal class ProcessMp3
     {
-        public static Mp3Settings GetMp3Info(string mp3File)
+        public static Mp3Settings GetMp3Info(string mp3File, bool isBatchMode)
         {
             var mp3Settings = new Mp3Settings();
+
+            string errorMsg;
+
+            if (isBatchMode)
+            {
+                errorMsg = $"Failed to read '{Path.GetFileName(mp3File)}' file.\nPlease convert the file in Single mode by specifying the sample rate and channel count manually.";
+            }
+            else
+            {
+                errorMsg = "Failed to read mp3 file.\nPlease specify the sample rate and channel count manually.";
+            }
 
             using (var mp3Reader = new BinaryReader(File.Open(mp3File, FileMode.Open, FileAccess.Read, FileShare.Read)))
             {
@@ -53,7 +65,15 @@ namespace Drakengard3MusicMaker
                     }
                     else
                     {
-                        SharedMethods.ErrorStop("Failed to read mp3 file.\nPlease specify the sample rate and channel count manually.");
+                        if (isBatchMode)
+                        {
+                            SharedMethods.AppMsgBox(errorMsg, "Error", MessageBoxIcon.Error);
+                            return null;
+                        }
+                        else
+                        {
+                            SharedMethods.ErrorStop(errorMsg);
+                        }
                     }
 
                     keyValRead = Convert.ToInt32(mp3FrameHeaderBits.Substring(20, 2), 2);
@@ -69,20 +89,27 @@ namespace Drakengard3MusicMaker
                     }
 
                     keyValRead = Convert.ToInt32(mp3FrameHeaderBits.Substring(24, 2), 2);
-                    mp3Settings.ChannelCount = decimal.One;
 
-                    if (ChannelCountDict.ContainsKey(keyValRead))
+                    if (keyValRead == 3)
                     {
-                        mp3Settings.ChannelCount = ChannelCountDict[keyValRead];
+                        mp3Settings.ChannelCount = 1;
                     }
                     else
                     {
-                        SharedMethods.ErrorStop("Failed to read mp3 file.\nPlease specify the sample rate and channel count manually.");
+                        mp3Settings.ChannelCount = 2;
                     }
                 }
                 else
                 {
-                    SharedMethods.ErrorStop("Failed to read mp3 file.\nPlease specify the sample rate and channel count manually.");
+                    if (isBatchMode)
+                    {
+                        SharedMethods.AppMsgBox(errorMsg, "Error", MessageBoxIcon.Error);
+                        return null;
+                    }
+                    else
+                    {
+                        SharedMethods.ErrorStop(errorMsg);
+                    }
                 }
             }
 
@@ -116,15 +143,6 @@ namespace Drakengard3MusicMaker
             { (3, "v1"), 0 },
             { (3, "v2"), 0 },
             { (3, "v2.5"), 0 }
-        };
-
-
-        private static readonly Dictionary<int, int> ChannelCountDict = new Dictionary<int, int>()
-        {
-            { 0, 2 },
-            { 1, 2 },
-            { 2, 2 },
-            { 3, 1 }
         };
     }
 }

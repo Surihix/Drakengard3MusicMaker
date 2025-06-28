@@ -60,11 +60,11 @@ namespace Drakengard3MusicMaker
         }
 
 
-        private void LoadFromMp3btn_Click(object sender, EventArgs e)
+        private void LoadFromMp3Btn_Click(object sender, EventArgs e)
         {
             try
             {
-                LoadFromMp3btn.Text = "Loading....";
+                LoadFromMp3Btn.Text = "Loading....";
                 EnableDisableControls(false);
 
                 SampleRateNumUpDown.Value = 0;
@@ -74,18 +74,18 @@ namespace Drakengard3MusicMaker
 
                 if (isLoadOk)
                 {
-                    var mp3Settings = ProcessMp3.GetMp3Info(Mp3PathTxtBox.Text);
+                    var mp3Settings = ProcessMp3.GetMp3Info(Mp3PathTxtBox.Text, false);
                     SampleRateNumUpDown.Value = mp3Settings.SampleRate;
                     ChannelCountNumUpDown.Value = mp3Settings.ChannelCount;
 
-                    LoadFromMp3btn.Text = "Load from Mp3";
+                    LoadFromMp3Btn.Text = "Load from mp3";
                     EnableDisableControls(true);
                 }
                 else
                 {
                     SharedMethods.AppMsgBox("Mp3 file path isn't set correctly or the file does not exist.\nPlease set the correct filepath for the mp3 file before trying this option.", "Error", MessageBoxIcon.Error);
 
-                    LoadFromMp3btn.Text = "Load from Mp3";
+                    LoadFromMp3Btn.Text = "Load from mp3";
                     EnableDisableControls(true);
                 }
             }
@@ -94,18 +94,18 @@ namespace Drakengard3MusicMaker
                 if (ex.Message != "Handled")
                 {
                     SharedMethods.AppMsgBox("" + ex, "Error", MessageBoxIcon.Error);
-                    ConvertAudiobtn.Text = "Convert Audio";
+                    ConvertAudioBtn.Text = "Convert Audio";
                     EnableDisableControls(true);
                 }
             }
         }
 
 
-        private void ConvertAudiobtn_Click(object sender, EventArgs e)
+        private void ConvertAudioBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                ConvertAudiobtn.Text = "Converting....";
+                ConvertAudioBtn.Text = "Converting....";
                 EnableDisableControls(false);
 
                 var isConvertOk = File.Exists($"{Mp3PathTxtBox.Text}") && File.Exists($"{XXXPathTxtBox.Text}") && File.Exists($"{PS3TOCPathTxtBox.Text}");
@@ -126,12 +126,14 @@ namespace Drakengard3MusicMaker
                     ProcessSCD.ConvertAudio(XXXPathTxtBox.Text, appSettings);
                     ProcessTOC.SingleModeEdit(PS3TOCPathTxtBox.Text, Path.GetFileName(XXXPathTxtBox.Text));
 
-                    ConvertAudiobtn.Text = "Convert Audio";
+                    ConvertAudioBtn.Text = "Convert Audio";
                     EnableDisableControls(true);
                 }
                 else
                 {
-                    ConvertAudiobtn.Text = "Convert Audio";
+                    SharedMethods.AppMsgBox("One or more file paths aren't set correctly or the files themselves does not exist.\nPlease set the correct filepaths for all of the files before trying to convert them.", "Error", MessageBoxIcon.Error);
+
+                    ConvertAudioBtn.Text = "Convert Audio";
                     EnableDisableControls(true);
                 }
             }
@@ -140,7 +142,7 @@ namespace Drakengard3MusicMaker
                 if (ex.Message != "Handled")
                 {
                     SharedMethods.AppMsgBox("" + ex, "Error", MessageBoxIcon.Error);
-                    ConvertAudiobtn.Text = "Convert Audio";
+                    ConvertAudioBtn.Text = "Convert Audio";
                     EnableDisableControls(true);
                 }
             }
@@ -175,9 +177,10 @@ namespace Drakengard3MusicMaker
             XXXBrowseBtn.Enabled = isEnabled;
             PS3TOCPathTxtBox.Enabled = isEnabled;
             PS3TOCBrowseBtn.Enabled = isEnabled;
+            LoadFromMp3Btn.Enabled = isEnabled;
             SampleRateNumUpDown.Enabled = isEnabled;
             ChannelCountNumUpDown.Enabled = isEnabled;
-            ConvertAudiobtn.Enabled = isEnabled;
+            ConvertAudioBtn.Enabled = isEnabled;
             OgVolRadioButton.Enabled = isEnabled;
             CustomVolRadioButton.Enabled = isEnabled;
             if (CustomVolRadioButton.Checked)

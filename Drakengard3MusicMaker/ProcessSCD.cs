@@ -25,7 +25,7 @@ namespace Drakengard3MusicMaker
                     uint audioInfoPos = 0;
                     uint audioStart = 0;
                     long mp3FileSize = 0;
-                    uint volumeToSet = 0;
+                    float volumeToSet = 0;
                     uint outScdAudioStart = 0;
 
                     using (var outScdStream = new FileStream(outScdFile, FileMode.Append, FileAccess.Write))
@@ -68,7 +68,7 @@ namespace Drakengard3MusicMaker
                             mp3FileSize = mp3Stream.Length;
 
                             inScdReader.BaseStream.Position = 296;
-                            volumeToSet = inScdReader.ReadBytesUInt32(true);
+                            volumeToSet = inScdReader.ReadBytesFloat(true);
 
                             if (appSettings.CustomVolumeButtonChecked)
                             {
@@ -78,22 +78,22 @@ namespace Drakengard3MusicMaker
                                         volumeToSet = 0;
                                         break;
                                     case 1:
-                                        volumeToSet = 1041865114;
+                                        volumeToSet = (float)0.15;
                                         break;
                                     case 2:
-                                        volumeToSet = 1051931443;
+                                        volumeToSet = (float)0.35;
                                         break;
                                     case 3:
-                                        volumeToSet = 1057803469;
+                                        volumeToSet = (float)0.55;
                                         break;
                                     case 4:
-                                        volumeToSet = 1061158912;
+                                        volumeToSet = (float)0.75;
                                         break;
                                     case 5:
-                                        volumeToSet = 1064514355;
+                                        volumeToSet = (float)0.95;
                                         break;
                                     case 6:
-                                        volumeToSet = 1065353216;
+                                        volumeToSet = 1;
                                         break;
                                 }
                             }
@@ -106,7 +106,7 @@ namespace Drakengard3MusicMaker
                         outScdWriter.WriteBytesUInt32((uint)SharedVariables.OutSCDsize, true);
 
                         outScdWriter.BaseStream.Position = 296;
-                        outScdWriter.WriteBytesUInt32(volumeToSet, true);
+                        outScdWriter.WriteBytesFloat(volumeToSet, true);
 
                         outScdWriter.BaseStream.Position = audioInfoPos;
                         outScdWriter.WriteBytesUInt32((uint)mp3FileSize, true);
