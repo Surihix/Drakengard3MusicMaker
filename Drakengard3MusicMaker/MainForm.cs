@@ -74,9 +74,13 @@ namespace Drakengard3MusicMaker
 
                 if (isLoadOk)
                 {
-                    var mp3Settings = ProcessMp3.GetMp3Info(Mp3PathTxtBox.Text, false);
-                    SampleRateNumUpDown.Value = mp3Settings.SampleRate;
-                    ChannelCountNumUpDown.Value = mp3Settings.ChannelCount;
+                    var mp3Settings = ProcessMp3.GetMp3Info(Mp3PathTxtBox.Text);
+
+                    if (mp3Settings != null)
+                    {
+                        SampleRateNumUpDown.Value = mp3Settings.SampleRate;
+                        ChannelCountNumUpDown.Value = mp3Settings.ChannelCount;
+                    }
 
                     LoadFromMp3Btn.Text = "Load from mp3";
                     EnableDisableControls(true);
@@ -94,9 +98,10 @@ namespace Drakengard3MusicMaker
                 if (ex.Message != "Handled")
                 {
                     SharedMethods.AppMsgBox("" + ex, "Error", MessageBoxIcon.Error);
-                    ConvertAudioBtn.Text = "Convert Audio";
-                    EnableDisableControls(true);
                 }
+
+                LoadFromMp3Btn.Text = "Load from mp3";
+                EnableDisableControls(true);
             }
         }
 
@@ -142,9 +147,10 @@ namespace Drakengard3MusicMaker
                 if (ex.Message != "Handled")
                 {
                     SharedMethods.AppMsgBox("" + ex, "Error", MessageBoxIcon.Error);
-                    ConvertAudioBtn.Text = "Convert Audio";
-                    EnableDisableControls(true);
                 }
+
+                ConvertAudioBtn.Text = "Convert Audio";
+                EnableDisableControls(true);
             }
         }
 

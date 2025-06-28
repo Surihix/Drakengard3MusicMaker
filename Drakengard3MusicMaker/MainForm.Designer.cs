@@ -456,7 +456,6 @@
             this.singleTabPage.Size = new System.Drawing.Size(549, 438);
             this.singleTabPage.TabIndex = 0;
             this.singleTabPage.Text = "Single Mode";
-            this.LoadFromMp3BtnToolTip.SetToolTip(this.singleTabPage, "Load settings from the selected mp3 file.");
             // 
             // batchTabPage
             // 
