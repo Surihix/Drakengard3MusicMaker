@@ -1,7 +1,7 @@
 ﻿using Drakengard3MusicMaker.Support;
 using System.IO;
 
-namespace Drakengard3MusicMaker
+namespace Drakengard3MusicMaker.ProcessHelpers
 {
     internal class ProcessSCD
     {

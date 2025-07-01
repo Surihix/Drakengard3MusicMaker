@@ -2446,6 +2446,9 @@
         NM0RDc8fIeeDE2136CDqAEVkamPYB0M//MdGIv0/Iqw41jnZfnMAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="ConvertFilesBtnToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1311, 17</value>
+  </metadata>
   <metadata name="LoadFromMp3BtnToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1123, 17</value>
   </metadata>

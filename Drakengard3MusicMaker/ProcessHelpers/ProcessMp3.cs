@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Drakengard3MusicMaker
+namespace Drakengard3MusicMaker.ProcessHelpers
 {
     internal class ProcessMp3
     {
@@ -68,29 +68,11 @@ namespace Drakengard3MusicMaker
         {
             try
             {
-                var lineData = File.ReadAllLines(mp3TxtFile);
+                var txtSettings = TxtDeserializer.DeserializeData(mp3TxtFile);
+                mp3SettingsTxt.SampleRate = txtSettings.SampleRate;
+                mp3SettingsTxt.ChannelCount = txtSettings.ChannelCount;
 
-                if (lineData.Length > 1)
-                {
-                    if (decimal.TryParse(lineData[0], out decimal sampleRate) == false)
-                    {
-                        throw new Exception();
-                    }
-
-                    if (decimal.TryParse(lineData[1], out decimal channelCount) == false)
-                    {
-                        throw new Exception();
-                    }
-
-                    mp3SettingsTxt.SampleRate = sampleRate;
-                    mp3SettingsTxt.ChannelCount = channelCount;
-
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                return true;
             }
             catch
             {
@@ -138,7 +120,7 @@ namespace Drakengard3MusicMaker
                             mp3FrameHeaderBits += Convert.ToString(mp3FrameHeaderBytes[i], 2).PadLeft(8, '0');
                         }
 
-                        var keyValRead = Convert.ToInt32(mp3FrameHeaderBits.Substring(10, 2), 2);
+                        var keyValRead = Convert.ToInt32(mp3FrameHeaderBits.Substring(11, 2), 2);
 
                         string mpegVersion;
 

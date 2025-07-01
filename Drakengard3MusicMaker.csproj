@@ -41,8 +41,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,9 +66,99 @@
     <Compile Include="Drakengard3MusicMaker\Extensions\BinaryWriterHelpers.cs" />
     <Compile Include="Drakengard3MusicMaker\Extensions\StreamHelpers.cs" />
     <Compile Include="Drakengard3MusicMaker\Mp3Settings.cs" />
-    <Compile Include="Drakengard3MusicMaker\ProcessMp3.cs" />
-    <Compile Include="Drakengard3MusicMaker\ProcessSCD.cs" />
-    <Compile Include="Drakengard3MusicMaker\ProcessTOC.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\AdditionalVisualStyleElements.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\AnimationResource.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\ButtonType.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\ComCtlv6ActivationContext.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\CredentialDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\CredentialDialog.designer.cs">
+      <DependentUpon>CredentialDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\CredentialException.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\DialogHelper.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\DownlevelTextMode.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\ExpandButtonClickedEventArgs.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\ExtendedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\Glass.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\GlobalSuppressions.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\HyperlinkClickedEventArgs.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\InputDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\InputDialog.designer.cs">
+      <DependentUpon>InputDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\InputDialogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\InputDialogForm.designer.cs">
+      <DependentUpon>InputDialogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\Interop\ComDlgResources.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\Interop\COMGuids.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\Interop\ErrorHelper.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\Interop\IProgressDialog.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\Interop\ShellComInterfaces.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\Interop\ShellWrapperDefinitions.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\Interop\Win32Resources.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\Interop\WindowHandleWrapper.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\NativeMethods.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\OkButtonClickedEventArgs.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\ProgressBarState.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\ProgressBarStyle.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\ProgressDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\ProgressDialog.designer.cs">
+      <DependentUpon>ProgressDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\Properties\Resources.Designer.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\SafeHandles.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\ShellAnimation.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\TaskDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\TaskDialog.designer.cs">
+      <DependentUpon>TaskDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\TaskDialogButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\TaskDialogButtonStyle.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\TaskDialogDesigner.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\TaskDialogIcon.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\TaskDialogItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\TaskDialogItem.designer.cs">
+      <DependentUpon>TaskDialogItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\TaskDialogItemClickedEventArgs.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\TaskDialogItemCollection.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\TaskDialogRadioButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\TimerEventArgs.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\VistaFileDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\VistaFileDialogEvents.cs" />
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\VistaFolderBrowserDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\VistaOpenFileDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\VistaSaveFileDialog.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Drakengard3MusicMaker\ProcessHelpers\ProcessMp3.cs" />
+    <Compile Include="Drakengard3MusicMaker\ProcessHelpers\ProcessSCD.cs" />
+    <Compile Include="Drakengard3MusicMaker\ProcessHelpers\ProcessTOC.cs" />
     <Compile Include="Drakengard3MusicMaker\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +168,8 @@
     <Compile Include="Drakengard3MusicMaker\Program.cs" />
     <Compile Include="Drakengard3MusicMaker\Support\SharedMethods.cs" />
     <Compile Include="Drakengard3MusicMaker\Support\SharedVariables.cs" />
+    <Compile Include="Drakengard3MusicMaker\Support\TxtDeserializer.cs" />
+    <Compile Include="Drakengard3MusicMaker\TxtSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Drakengard3MusicMaker\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
@@ -83,6 +177,16 @@
     <EmbeddedResource Include="Drakengard3MusicMaker\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\ExtendedForm.resx">
+      <DependentUpon>ExtendedForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\InputDialogForm.resx">
+      <DependentUpon>InputDialogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\ProgressDialog.resx">
+      <DependentUpon>ProgressDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\Properties\Resources.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -93,6 +197,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\.editorconfig" />
+    <None Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\Ookii.Dialogs.WinForms.csproj" />
+    <None Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\Properties\XPThemes.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -108,8 +215,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app_icon.ico" />
+    <Content Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\CredentialDialog.bmp" />
+    <Content Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\InputDialog.bmp" />
+    <Content Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\ProgressDialog.bmp" />
+    <Content Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\TaskDialog.bmp" />
+    <Content Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\VistaFolderBrowserDialog.bmp" />
+    <Content Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\VistaOpenFileDialog.bmp" />
+    <Content Include="Drakengard3MusicMaker\Ookii.Dialogs.WinForms\VistaSaveFileDialog.bmp" />
     <Content Include="external files\AppHelp.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>set helpTxt=$(SolutionDir)external files\AppHelp.txt

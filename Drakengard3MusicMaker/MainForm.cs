@@ -1,6 +1,8 @@
-﻿using Drakengard3MusicMaker.Support;
+﻿using Drakengard3MusicMaker.ProcessHelpers;
+using Drakengard3MusicMaker.Support;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Drakengard3MusicMaker
@@ -62,11 +64,11 @@ namespace Drakengard3MusicMaker
 
         private void LoadFromMp3Btn_Click(object sender, EventArgs e)
         {
+            LoadFromMp3Btn.Text = "Loading....";
+            EnableDisableControls(false);
+
             try
             {
-                LoadFromMp3Btn.Text = "Loading....";
-                EnableDisableControls(false);
-
                 SampleRateNumUpDown.Value = 0;
                 ChannelCountNumUpDown.Value = 1;
 
@@ -81,16 +83,10 @@ namespace Drakengard3MusicMaker
                         SampleRateNumUpDown.Value = mp3Settings.SampleRate;
                         ChannelCountNumUpDown.Value = mp3Settings.ChannelCount;
                     }
-
-                    LoadFromMp3Btn.Text = "Load from mp3";
-                    EnableDisableControls(true);
                 }
                 else
                 {
                     SharedMethods.AppMsgBox("Mp3 file path isn't set correctly or the file does not exist.\nPlease set the correct filepath for the mp3 file before trying this option.", "Error", MessageBoxIcon.Error);
-
-                    LoadFromMp3Btn.Text = "Load from mp3";
-                    EnableDisableControls(true);
                 }
             }
             catch (Exception ex)
@@ -99,20 +95,20 @@ namespace Drakengard3MusicMaker
                 {
                     SharedMethods.AppMsgBox("" + ex, "Error", MessageBoxIcon.Error);
                 }
-
-                LoadFromMp3Btn.Text = "Load from mp3";
-                EnableDisableControls(true);
             }
+
+            LoadFromMp3Btn.Text = "Load from mp3";
+            EnableDisableControls(true);
         }
 
 
         private void ConvertAudioBtn_Click(object sender, EventArgs e)
         {
+            ConvertAudioBtn.Text = "Converting....";
+            EnableDisableControls(false);
+
             try
             {
-                ConvertAudioBtn.Text = "Converting....";
-                EnableDisableControls(false);
-
                 var isConvertOk = File.Exists($"{Mp3PathTxtBox.Text}") && File.Exists($"{XXXPathTxtBox.Text}") && File.Exists($"{PS3TOCPathTxtBox.Text}");
 
                 if (isConvertOk)
@@ -130,16 +126,10 @@ namespace Drakengard3MusicMaker
 
                     ProcessSCD.ConvertAudio(XXXPathTxtBox.Text, appSettings);
                     ProcessTOC.SingleModeEdit(PS3TOCPathTxtBox.Text, Path.GetFileName(XXXPathTxtBox.Text));
-
-                    ConvertAudioBtn.Text = "Convert Audio";
-                    EnableDisableControls(true);
                 }
                 else
                 {
                     SharedMethods.AppMsgBox("One or more file paths aren't set correctly or the files themselves does not exist.\nPlease set the correct filepaths for all of the files before trying to convert them.", "Error", MessageBoxIcon.Error);
-
-                    ConvertAudioBtn.Text = "Convert Audio";
-                    EnableDisableControls(true);
                 }
             }
             catch (Exception ex)
@@ -148,9 +138,61 @@ namespace Drakengard3MusicMaker
                 {
                     SharedMethods.AppMsgBox("" + ex, "Error", MessageBoxIcon.Error);
                 }
+            }
 
-                ConvertAudioBtn.Text = "Convert Audio";
-                EnableDisableControls(true);
+            ConvertAudioBtn.Text = "Convert Audio";
+            EnableDisableControls(true);
+        }
+
+
+        private void ConvertFilesBtn_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Mp3DirTxtBox.Text) && !string.IsNullOrEmpty(XXXDirTxtBox.Text) && !string.IsNullOrEmpty(PS3TOCPathTxtBox2.Text))
+            {
+                ConvertFilesBtn.Text = "Converting....";
+                EnableDisableControls(false);
+
+                var mp3Dir = Mp3DirTxtBox.Text;
+                var xxxDir = XXXDirTxtBox.Text;
+                var ps3TocFile = PS3TOCPathTxtBox2.Text;
+
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        var isConvertOk = Directory.Exists(mp3Dir) && Directory.Exists(xxxDir) && File.Exists(ps3TocFile);
+
+                        if (isConvertOk)
+                        {
+                            var mp3InfoDict = ProcessMp3.GetMp3InfoBatch(mp3Dir);
+
+                            string mp3Name;
+
+                            foreach (var mp3 in mp3InfoDict)
+                            {
+                                mp3Name = Path.GetFileNameWithoutExtension(mp3.Key);
+
+                                //
+                            }
+                        }
+                        else
+                        {
+                            SharedMethods.AppMsgBox("One or more paths aren't set correctly or the paths themselves does not exist.\nPlease set the correct paths for all of the files before trying to convert them.", "Error", MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex.Message != "Handled")
+                        {
+                            SharedMethods.AppMsgBox("" + ex, "Error", MessageBoxIcon.Error);
+                        }
+                    }
+                    finally
+                    {
+                        BeginInvoke(new Action(() => ConvertFilesBtn.Text = "Convert Files"));
+                        BeginInvoke(new Action(() => EnableDisableControls(true)));
+                    }
+                });
             }
         }
 

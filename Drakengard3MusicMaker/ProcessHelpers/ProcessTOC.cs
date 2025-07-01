@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Drakengard3MusicMaker
+namespace Drakengard3MusicMaker.ProcessHelpers
 {
     internal class ProcessTOC
     {
@@ -58,7 +58,22 @@ namespace Drakengard3MusicMaker
 
         public static void BatchModeEdit(string tocFile)
         {
+            var totalEntries = File.ReadLines(tocFile).Count();
 
+            using (StreamReader tocReader = new StreamReader(tocFile))
+            {
+                var newTocFile = Path.Combine(Path.GetDirectoryName(tocFile), $"New_{Path.GetFileName(tocFile)}");
+                SharedMethods.IfFileExistDel(newTocFile);
+
+                using (FileStream outTocTxtStream = new FileStream(newTocFile, FileMode.Append, FileAccess.Write))
+                {
+                    using (StreamWriter tocWriter = new StreamWriter(outTocTxtStream))
+                    {
+
+
+                    }
+                }
+            }
         }
     }
 }

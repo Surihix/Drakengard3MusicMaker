@@ -80,6 +80,8 @@
             this.XXXDirLabel = new System.Windows.Forms.Label();
             this.Mp3DirLabel = new System.Windows.Forms.Label();
             this.LoadFromMp3BtnToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.ConvertFilesBtn = new System.Windows.Forms.Button();
+            this.ConvertFilesBtnToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.mp3SettingsGrpBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChannelCountNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SampleRateNumUpDown)).BeginInit();
@@ -460,6 +462,7 @@
             // batchTabPage
             // 
             this.batchTabPage.BackColor = System.Drawing.Color.Transparent;
+            this.batchTabPage.Controls.Add(this.ConvertFilesBtn);
             this.batchTabPage.Controls.Add(this.PS3TOCBrowseBtn2);
             this.batchTabPage.Controls.Add(this.XXXBrowseDirBtn);
             this.batchTabPage.Controls.Add(this.Mp3BrowseDirBtn);
@@ -554,6 +557,18 @@
             this.Mp3DirLabel.TabIndex = 11;
             this.Mp3DirLabel.Text = "Select directory containing mp3 files to encode:";
             // 
+            // ConvertFilesBtn
+            // 
+            this.ConvertFilesBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConvertFilesBtn.Location = new System.Drawing.Point(217, 199);
+            this.ConvertFilesBtn.Name = "ConvertFilesBtn";
+            this.ConvertFilesBtn.Size = new System.Drawing.Size(115, 42);
+            this.ConvertFilesBtn.TabIndex = 20;
+            this.ConvertFilesBtn.Text = "Convert Files";
+            this.ConvertFilesBtnToolTip.SetToolTip(this.ConvertFilesBtn, "Convert the mp3 files to XXX audio files\r\n.");
+            this.ConvertFilesBtn.UseVisualStyleBackColor = true;
+            this.ConvertFilesBtn.Click += new System.EventHandler(this.ConvertFilesBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -643,6 +658,8 @@
         private System.Windows.Forms.Button Mp3BrowseDirBtn;
         private System.Windows.Forms.Button LoadFromMp3Btn;
         private System.Windows.Forms.ToolTip LoadFromMp3BtnToolTip;
+        private System.Windows.Forms.Button ConvertFilesBtn;
+        private System.Windows.Forms.ToolTip ConvertFilesBtnToolTip;
     }
 }
 
