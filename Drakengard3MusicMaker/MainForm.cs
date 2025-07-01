@@ -1,6 +1,8 @@
 ﻿using Drakengard3MusicMaker.ProcessHelpers;
 using Drakengard3MusicMaker.Support;
+using Ookii.Dialogs.WinForms;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -50,6 +52,41 @@ namespace Drakengard3MusicMaker
 
 
         private void PS3TOCBrowseBtn_Click(object sender, EventArgs e)
+        {
+            OFDInitializer("PS3TOC Text file", out OpenFileDialog tocPath_select, "|PS3TOC.TXT");
+
+            if (tocPath_select.ShowDialog() == DialogResult.OK)
+            {
+                var tocFilePath = tocPath_select.FileName;
+                var tocTxtBoxText = Path.GetFullPath($"{tocFilePath}");
+                PS3TOCPathTxtBox.Text = tocTxtBoxText;
+            }
+        }
+
+
+        private void Mp3BrowseDirBtn_Click(object sender, EventArgs e)
+        {
+            OFLDInitializer("Select a folder that has mp3 files", out VistaFolderBrowserDialog ofldVar);
+
+            if (ofldVar.ShowDialog() == DialogResult.OK)
+            {
+                Mp3DirTxtBox.Text = ofldVar.SelectedPath;
+            }
+        }
+
+
+        private void XXXBrowseDirBtn_Click(object sender, EventArgs e)
+        {
+            OFLDInitializer("Select a folder that has XXX files", out VistaFolderBrowserDialog ofldVar);
+
+            if (ofldVar.ShowDialog() == DialogResult.OK)
+            {
+                XXXDirTxtBox.Text = ofldVar.SelectedPath;
+            }
+        }
+
+
+        private void PS3TOCBrowseBtn2_Click(object sender, EventArgs e)
         {
             OFDInitializer("PS3TOC Text file", out OpenFileDialog tocPath_select, "|PS3TOC.TXT");
 
@@ -154,26 +191,44 @@ namespace Drakengard3MusicMaker
 
                 var mp3Dir = Mp3DirTxtBox.Text;
                 var xxxDir = XXXDirTxtBox.Text;
-                var ps3TocFile = PS3TOCPathTxtBox2.Text;
+                var tocFile = PS3TOCPathTxtBox2.Text;
 
                 Task.Run(() =>
                 {
                     try
                     {
-                        var isConvertOk = Directory.Exists(mp3Dir) && Directory.Exists(xxxDir) && File.Exists(ps3TocFile);
+                        var isConvertOk = Directory.Exists(mp3Dir) && Directory.Exists(xxxDir) && File.Exists(tocFile);
 
                         if (isConvertOk)
                         {
                             var mp3InfoDict = ProcessMp3.GetMp3InfoBatch(mp3Dir);
+                            var procSCDs = new List<string>();
 
-                            string mp3Name;
+                            string scdFile;
 
                             foreach (var mp3 in mp3InfoDict)
                             {
-                                mp3Name = Path.GetFileNameWithoutExtension(mp3.Key);
+                                scdFile = Path.Combine(xxxDir, Path.GetFileNameWithoutExtension(mp3.Key) + ".XXX");
 
-                                //
+                                if (File.Exists(scdFile))
+                                {
+                                    var appSettings = new AppSettings()
+                                    {
+                                        OutMp3File = mp3.Key,
+                                        Mp3SampleRate = mp3.Value.SampleRate,
+                                        Mp3ChannelCount = mp3.Value.ChannelCount,
+                                        Mp3LoopStart = mp3.Value.LoopStart == -1 ? 0 : mp3.Value.LoopStart,
+                                        Mp3LoopEnd = mp3.Value.LoopEnd == -1 ? 0 : mp3.Value.LoopEnd,
+                                        CustomVolumeButtonChecked = mp3.Value.Volume != -1,
+                                        VolumeSliderValue = mp3.Value.Volume
+                                    };
+
+                                    ProcessSCD.ConvertAudio(scdFile, appSettings);
+                                    procSCDs.Add(scdFile);
+                                }
                             }
+
+                            ProcessTOC.BatchModeEdit(tocFile, procSCDs);
                         }
                         else
                         {
@@ -203,6 +258,15 @@ namespace Drakengard3MusicMaker
             {
                 Filter = ofdDesc + ofdFilter,
                 RestoreDirectory = true
+            };
+        }
+
+        private void OFLDInitializer(string ofldDesc, out VistaFolderBrowserDialog ofldVar)
+        {
+            ofldVar = new VistaFolderBrowserDialog
+            {
+                Description = ofldDesc,
+                UseDescriptionForTitle = true
             };
         }
 

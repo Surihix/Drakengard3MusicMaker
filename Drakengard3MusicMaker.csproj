@@ -169,7 +169,6 @@
     <Compile Include="Drakengard3MusicMaker\Support\SharedMethods.cs" />
     <Compile Include="Drakengard3MusicMaker\Support\SharedVariables.cs" />
     <Compile Include="Drakengard3MusicMaker\Support\TxtDeserializer.cs" />
-    <Compile Include="Drakengard3MusicMaker\TxtSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Drakengard3MusicMaker\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>

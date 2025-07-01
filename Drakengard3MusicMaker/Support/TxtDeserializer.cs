@@ -5,12 +5,11 @@ namespace Drakengard3MusicMaker.Support
 {
     internal class TxtDeserializer
     {
-        public static TxtSettings DeserializeData(string txtFile)
+        public static void DeserializeData(string txtFile, ref Mp3Settings mp3SettingsFromTxt)
         {
-            var txtSettings = new TxtSettings();
             var lineData = File.ReadAllLines(txtFile);
 
-            if (lineData.Length > typeof(TxtSettings).GetFields().Length)
+            if (lineData.Length > typeof(Mp3Settings).GetFields().Length)
             {
                 if (decimal.TryParse(lineData[0], out decimal sampleRate) == false)
                 {
@@ -22,7 +21,7 @@ namespace Drakengard3MusicMaker.Support
                     throw new Exception();
                 }
 
-                if (decimal.TryParse(lineData[2], out decimal volume) == false)
+                if (int.TryParse(lineData[2], out int volume) == false)
                 {
                     throw new Exception();
                 }
@@ -37,14 +36,12 @@ namespace Drakengard3MusicMaker.Support
                     throw new Exception();
                 }
 
-                txtSettings.SampleRate = sampleRate;
-                txtSettings.ChannelCount = channelCount;
-                txtSettings.Volume = volume;
-                txtSettings.LoopStart = loopStart;
-                txtSettings.LoopEnd = loopEnd;
+                mp3SettingsFromTxt.SampleRate = sampleRate;
+                mp3SettingsFromTxt.ChannelCount = channelCount;
+                mp3SettingsFromTxt.Volume = volume;
+                mp3SettingsFromTxt.LoopStart = loopStart;
+                mp3SettingsFromTxt.LoopEnd = loopEnd;
             }
-
-            return txtSettings;
         }
     }
 }

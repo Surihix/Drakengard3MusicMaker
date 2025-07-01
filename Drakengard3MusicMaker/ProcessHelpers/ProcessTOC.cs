@@ -1,5 +1,6 @@
 ﻿using Drakengard3MusicMaker.Support;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -56,7 +57,7 @@ namespace Drakengard3MusicMaker.ProcessHelpers
         }
 
 
-        public static void BatchModeEdit(string tocFile)
+        public static void BatchModeEdit(string tocFile, List<string> procSCDs)
         {
             var totalEntries = File.ReadLines(tocFile).Count();
 

@@ -64,14 +64,11 @@ namespace Drakengard3MusicMaker.ProcessHelpers
         }
 
 
-        private static bool ReadMp3TxtFile(string mp3TxtFile, ref Mp3Settings mp3SettingsTxt)
+        private static bool ReadMp3TxtFile(string mp3TxtFile, ref Mp3Settings mp3SettingsFromTxt)
         {
             try
             {
-                var txtSettings = TxtDeserializer.DeserializeData(mp3TxtFile);
-                mp3SettingsTxt.SampleRate = txtSettings.SampleRate;
-                mp3SettingsTxt.ChannelCount = txtSettings.ChannelCount;
-
+                TxtDeserializer.DeserializeData(mp3TxtFile, ref mp3SettingsFromTxt);
                 return true;
             }
             catch

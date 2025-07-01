@@ -70,6 +70,7 @@
             this.TabControl = new System.Windows.Forms.TabControl();
             this.singleTabPage = new System.Windows.Forms.TabPage();
             this.batchTabPage = new System.Windows.Forms.TabPage();
+            this.ConvertFilesBtn = new System.Windows.Forms.Button();
             this.PS3TOCBrowseBtn2 = new System.Windows.Forms.Button();
             this.XXXBrowseDirBtn = new System.Windows.Forms.Button();
             this.Mp3BrowseDirBtn = new System.Windows.Forms.Button();
@@ -80,7 +81,6 @@
             this.XXXDirLabel = new System.Windows.Forms.Label();
             this.Mp3DirLabel = new System.Windows.Forms.Label();
             this.LoadFromMp3BtnToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.ConvertFilesBtn = new System.Windows.Forms.Button();
             this.ConvertFilesBtnToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.mp3SettingsGrpBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChannelCountNumUpDown)).BeginInit();
@@ -479,6 +479,18 @@
             this.batchTabPage.TabIndex = 1;
             this.batchTabPage.Text = "Batch Mode";
             // 
+            // ConvertFilesBtn
+            // 
+            this.ConvertFilesBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConvertFilesBtn.Location = new System.Drawing.Point(217, 199);
+            this.ConvertFilesBtn.Name = "ConvertFilesBtn";
+            this.ConvertFilesBtn.Size = new System.Drawing.Size(115, 42);
+            this.ConvertFilesBtn.TabIndex = 20;
+            this.ConvertFilesBtn.Text = "Convert Files";
+            this.ConvertFilesBtnToolTip.SetToolTip(this.ConvertFilesBtn, "Convert the mp3 files to XXX audio files\r\n.");
+            this.ConvertFilesBtn.UseVisualStyleBackColor = true;
+            this.ConvertFilesBtn.Click += new System.EventHandler(this.ConvertFilesBtn_Click);
+            // 
             // PS3TOCBrowseBtn2
             // 
             this.PS3TOCBrowseBtn2.Location = new System.Drawing.Point(475, 131);
@@ -487,6 +499,7 @@
             this.PS3TOCBrowseBtn2.TabIndex = 19;
             this.PS3TOCBrowseBtn2.Text = "Browse...";
             this.PS3TOCBrowseBtn2.UseVisualStyleBackColor = true;
+            this.PS3TOCBrowseBtn2.Click += new System.EventHandler(this.PS3TOCBrowseBtn2_Click);
             // 
             // XXXBrowseDirBtn
             // 
@@ -496,6 +509,7 @@
             this.XXXBrowseDirBtn.TabIndex = 18;
             this.XXXBrowseDirBtn.Text = "Browse...";
             this.XXXBrowseDirBtn.UseVisualStyleBackColor = true;
+            this.XXXBrowseDirBtn.Click += new System.EventHandler(this.XXXBrowseDirBtn_Click);
             // 
             // Mp3BrowseDirBtn
             // 
@@ -505,6 +519,7 @@
             this.Mp3BrowseDirBtn.TabIndex = 17;
             this.Mp3BrowseDirBtn.Text = "Browse...";
             this.Mp3BrowseDirBtn.UseVisualStyleBackColor = true;
+            this.Mp3BrowseDirBtn.Click += new System.EventHandler(this.Mp3BrowseDirBtn_Click);
             // 
             // PS3TOCPathTxtBox2
             // 
@@ -556,18 +571,6 @@
             this.Mp3DirLabel.Size = new System.Drawing.Size(263, 15);
             this.Mp3DirLabel.TabIndex = 11;
             this.Mp3DirLabel.Text = "Select directory containing mp3 files to encode:";
-            // 
-            // ConvertFilesBtn
-            // 
-            this.ConvertFilesBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConvertFilesBtn.Location = new System.Drawing.Point(217, 199);
-            this.ConvertFilesBtn.Name = "ConvertFilesBtn";
-            this.ConvertFilesBtn.Size = new System.Drawing.Size(115, 42);
-            this.ConvertFilesBtn.TabIndex = 20;
-            this.ConvertFilesBtn.Text = "Convert Files";
-            this.ConvertFilesBtnToolTip.SetToolTip(this.ConvertFilesBtn, "Convert the mp3 files to XXX audio files\r\n.");
-            this.ConvertFilesBtn.UseVisualStyleBackColor = true;
-            this.ConvertFilesBtn.Click += new System.EventHandler(this.ConvertFilesBtn_Click);
             // 
             // MainForm
             // 
