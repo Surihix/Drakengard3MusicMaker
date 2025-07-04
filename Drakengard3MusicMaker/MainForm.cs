@@ -17,7 +17,7 @@ namespace Drakengard3MusicMaker
 
             if (!File.Exists("AppHelp.txt"))
             {
-                SharedMethods.AppMsgBox("The 'AppHelp.txt' file is missing.\nPlease ensure that this file is present next to the app to use the Help option.", "Warning", MessageBoxIcon.Warning);
+                MessageBox.Show("The 'AppHelp.txt' file is missing.\nPlease ensure that this file is present next to the app to use the Help option.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             OgVolRadioButton.Checked = true;
@@ -109,13 +109,17 @@ namespace Drakengard3MusicMaker
                 SampleRateNumUpDown.Value = 0;
                 ChannelCountNumUpDown.Value = 1;
 
-                var isLoadOk = File.Exists($"{Mp3PathTxtBox.Text}");
+                var isLoadReady = File.Exists($"{Mp3PathTxtBox.Text}");
 
-                if (isLoadOk)
+                if (isLoadReady)
                 {
                     var mp3Settings = ProcessMp3.GetMp3Info(Mp3PathTxtBox.Text);
 
-                    if (mp3Settings != null)
+                    if (mp3Settings == null)
+                    {
+                        MessageBox.Show("Failed to read mp3 file.\nPlease specify the sample rate and channel count manually.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
                     {
                         SampleRateNumUpDown.Value = mp3Settings.SampleRate;
                         ChannelCountNumUpDown.Value = mp3Settings.ChannelCount;
@@ -123,14 +127,14 @@ namespace Drakengard3MusicMaker
                 }
                 else
                 {
-                    SharedMethods.AppMsgBox("Mp3 file path isn't set correctly or the file does not exist.\nPlease set the correct filepath for the mp3 file before trying this option.", "Error", MessageBoxIcon.Error);
+                    SharedMethods.ErrorStop("Mp3 file path isn't set correctly or the file does not exist.\nPlease set the correct filepath for the mp3 file before trying this option.");
                 }
             }
             catch (Exception ex)
             {
                 if (ex.Message != "Handled")
                 {
-                    SharedMethods.AppMsgBox("" + ex, "Error", MessageBoxIcon.Error);
+                    MessageBox.Show("" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -146,9 +150,9 @@ namespace Drakengard3MusicMaker
 
             try
             {
-                var isConvertOk = File.Exists($"{Mp3PathTxtBox.Text}") && File.Exists($"{XXXPathTxtBox.Text}") && File.Exists($"{PS3TOCPathTxtBox.Text}");
+                var isConvertReady = File.Exists($"{Mp3PathTxtBox.Text}") && File.Exists($"{XXXPathTxtBox.Text}") && File.Exists($"{PS3TOCPathTxtBox.Text}");
 
-                if (isConvertOk)
+                if (isConvertReady)
                 {
                     var appSettings = new AppSettings()
                     {
@@ -158,22 +162,36 @@ namespace Drakengard3MusicMaker
                         Mp3LoopStart = LoopStartNumUpDown.Value,
                         Mp3LoopEnd = LoopEndNumUpDown.Value,
                         CustomVolumeButtonChecked = CustomVolRadioButton.Checked,
-                        VolumeSliderValue = VolSlider.Value
+                        VolumeSliderValue = VolSlider.Value,
+                        IsSingleMode = true
                     };
 
-                    ProcessSCD.ConvertAudio(XXXPathTxtBox.Text, appSettings);
-                    ProcessTOC.SingleModeEdit(PS3TOCPathTxtBox.Text, Path.GetFileName(XXXPathTxtBox.Text));
+                    var hasConvertedAudio = ProcessSCD.ConvertAudio(XXXPathTxtBox.Text, appSettings);
+
+                    if (hasConvertedAudio)
+                    {
+                        var hasUpdatedTOC = ProcessTOC.SingleModeUpdate(PS3TOCPathTxtBox.Text, XXXPathTxtBox.Text);
+
+                        if (hasUpdatedTOC)
+                        {
+                            MessageBox.Show("Replaced music data in XXX file and updated TOC file.\nThe XXX and the TOC files prior to the conversion process, have been renamed to '.old' files", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("TOC file was not updated as the XXX file's entry is missing in the TOC file.\nThe game might crash after it finishes playing this audio file.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
                 }
                 else
                 {
-                    SharedMethods.AppMsgBox("One or more file paths aren't set correctly or the files themselves does not exist.\nPlease set the correct filepaths for all of the files before trying to convert them.", "Error", MessageBoxIcon.Error);
+                    SharedMethods.ErrorStop("One or more file paths aren't set correctly or the files themselves does not exist.\nPlease set the correct filepaths for all of the files before trying to convert them.");
                 }
             }
             catch (Exception ex)
             {
                 if (ex.Message != "Handled")
                 {
-                    SharedMethods.AppMsgBox("" + ex, "Error", MessageBoxIcon.Error);
+                    MessageBox.Show("" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
@@ -197,12 +215,12 @@ namespace Drakengard3MusicMaker
                 {
                     try
                     {
-                        var isConvertOk = Directory.Exists(mp3Dir) && Directory.Exists(xxxDir) && File.Exists(tocFile);
+                        var isBatchConvertReady = Directory.Exists(mp3Dir) && Directory.Exists(xxxDir) && File.Exists(tocFile);
 
-                        if (isConvertOk)
+                        if (isBatchConvertReady)
                         {
                             var mp3InfoDict = ProcessMp3.GetMp3InfoBatch(mp3Dir);
-                            var procSCDs = new List<string>();
+                            var procSCDfileDict = new Dictionary<string, string>();
 
                             string scdFile;
 
@@ -220,26 +238,34 @@ namespace Drakengard3MusicMaker
                                         Mp3LoopStart = mp3.Value.LoopStart == -1 ? 0 : mp3.Value.LoopStart,
                                         Mp3LoopEnd = mp3.Value.LoopEnd == -1 ? 0 : mp3.Value.LoopEnd,
                                         CustomVolumeButtonChecked = mp3.Value.Volume != -1,
-                                        VolumeSliderValue = mp3.Value.Volume
+                                        VolumeSliderValue = mp3.Value.Volume,
+                                        IsSingleMode = false
                                     };
 
-                                    ProcessSCD.ConvertAudio(scdFile, appSettings);
-                                    procSCDs.Add(scdFile);
+                                    var hasConvertedAudio = ProcessSCD.ConvertAudio(scdFile, appSettings);
+
+                                    if (hasConvertedAudio)
+                                    {
+                                        var scdName = Path.GetFileName(scdFile);
+                                        procSCDfileDict.Add(scdName, scdFile);
+                                    }
                                 }
                             }
 
-                            ProcessTOC.BatchModeEdit(tocFile, procSCDs);
+                            ProcessTOC.BatchModeUpdate(tocFile, procSCDfileDict);
+
+                            MessageBox.Show("Replaced music data in valid XXX files and updated TOC file.\nThe XXX and the TOC files prior to the conversion process, have been renamed to '.old' files", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            SharedMethods.AppMsgBox("One or more paths aren't set correctly or the paths themselves does not exist.\nPlease set the correct paths for all of the files before trying to convert them.", "Error", MessageBoxIcon.Error);
+                            SharedMethods.ErrorStop("One or more paths aren't set correctly or the paths themselves does not exist.\nPlease set the correct paths for all of the files before trying to convert them.");
                         }
                     }
                     catch (Exception ex)
                     {
                         if (ex.Message != "Handled")
                         {
-                            SharedMethods.AppMsgBox("" + ex, "Error", MessageBoxIcon.Error);
+                            MessageBox.Show("" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     finally
@@ -323,12 +349,12 @@ namespace Drakengard3MusicMaker
                 }
                 catch (Exception ex)
                 {
-                    SharedMethods.AppMsgBox("Error: " + ex, "Error", MessageBoxIcon.Error);
+                    MessageBox.Show("" + ex, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                SharedMethods.AppMsgBox("Unable to locate the help text file.\nPlease ensure that this text file is present next to the app before using this option.", "Error", MessageBoxIcon.Error);
+                MessageBox.Show("Unable to locate the help text file.\nPlease ensure that this text file is present next to the app before using this option.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

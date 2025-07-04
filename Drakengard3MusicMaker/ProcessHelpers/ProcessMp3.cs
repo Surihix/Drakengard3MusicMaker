@@ -1,5 +1,4 @@
-﻿using Drakengard3MusicMaker.Support;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
@@ -8,6 +7,21 @@ namespace Drakengard3MusicMaker.ProcessHelpers
 {
     internal class ProcessMp3
     {
+        public static Mp3Settings GetMp3Info(string mp3File)
+        {
+            var mp3Settings = ReadMp3Header(mp3File);
+
+            if (mp3Settings == null)
+            {
+                return null;
+            }
+            else
+            {
+                return mp3Settings;
+            }
+        }
+
+
         public static Dictionary<string, Mp3Settings> GetMp3InfoBatch(string mp3Dir)
         {
             var mp3SettingsDict = new Dictionary<string, Mp3Settings>();
@@ -36,7 +50,7 @@ namespace Drakengard3MusicMaker.ProcessHelpers
 
                 if (mp3Settings == null)
                 {
-                    SharedMethods.AppMsgBox($"Failed to read '{Path.GetFileName(mp3File)}' file.\nPlease convert the file in Single mode by specifying the sample rate and channel count manually.", "Error", MessageBoxIcon.Error);
+                    MessageBox.Show($"Failed to read '{Path.GetFileName(mp3File)}' file.\nPlease convert the file in Single mode by specifying the sample rate and channel count manually or create a txt file next to the mp3 file and specify the info in each line.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 else
                 {
@@ -48,28 +62,51 @@ namespace Drakengard3MusicMaker.ProcessHelpers
         }
 
 
-        public static Mp3Settings GetMp3Info(string mp3File)
-        {
-            var mp3Settings = ReadMp3Header(mp3File);
-
-            if (mp3Settings == null)
-            {
-                SharedMethods.AppMsgBox("Failed to read mp3 file.\nPlease specify the sample rate and channel count manually.", "Error", MessageBoxIcon.Error);
-                return null;
-            }
-            else
-            {
-                return mp3Settings;
-            }
-        }
-
-
-        private static bool ReadMp3TxtFile(string mp3TxtFile, ref Mp3Settings mp3SettingsFromTxt)
+        private static bool ReadMp3TxtFile(string mp3TxtFile, ref Mp3Settings mp3SettingsTxt)
         {
             try
             {
-                TxtDeserializer.DeserializeData(mp3TxtFile, ref mp3SettingsFromTxt);
-                return true;
+                var lineData = File.ReadAllLines(mp3TxtFile);
+
+                if (lineData.Length > typeof(Mp3Settings).GetFields().Length)
+                {
+                    if (decimal.TryParse(lineData[0], out decimal sampleRate) == false)
+                    {
+                        throw new Exception();
+                    }
+
+                    if (decimal.TryParse(lineData[1], out decimal channelCount) == false)
+                    {
+                        throw new Exception();
+                    }
+
+                    if (int.TryParse(lineData[2], out int volume) == false)
+                    {
+                        throw new Exception();
+                    }
+
+                    if (decimal.TryParse(lineData[3], out decimal loopStart) == false)
+                    {
+                        throw new Exception();
+                    }
+
+                    if (decimal.TryParse(lineData[4], out decimal loopEnd) == false)
+                    {
+                        throw new Exception();
+                    }
+
+                    mp3SettingsTxt.SampleRate = sampleRate;
+                    mp3SettingsTxt.ChannelCount = channelCount;
+                    mp3SettingsTxt.Volume = volume;
+                    mp3SettingsTxt.LoopStart = loopStart;
+                    mp3SettingsTxt.LoopEnd = loopEnd;
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch
             {

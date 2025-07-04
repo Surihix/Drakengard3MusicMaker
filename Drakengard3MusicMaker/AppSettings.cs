@@ -9,5 +9,6 @@
         public decimal Mp3LoopEnd;
         public bool CustomVolumeButtonChecked;
         public int VolumeSliderValue;
+        public bool IsSingleMode;
     }
 }

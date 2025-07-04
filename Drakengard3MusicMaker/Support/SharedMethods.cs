@@ -5,15 +5,9 @@ namespace Drakengard3MusicMaker.Support
 {
     internal class SharedMethods
     {
-        public static void AppMsgBox(string msgTxt, string msgHeader, MessageBoxIcon msgType)
-        {
-            MessageBox.Show(msgTxt, msgHeader, MessageBoxButtons.OK, msgType);
-        }
-
-
         public static void ErrorStop(string errorMsg)
         {
-            AppMsgBox(errorMsg, "Error", MessageBoxIcon.Error);
+            MessageBox.Show(errorMsg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             throw new System.Exception("Handled");
         }
 

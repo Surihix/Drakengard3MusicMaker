@@ -4,7 +4,8 @@ Adjust the font or size of the text in this file, if they do not look clear.
 
 Important: This app only works with the PSN version game files and may or may not work with blu ray disc version files.
 
-
+Single Mode:
+------------------------------------------------------------------------------------------------------------------------------------------
 - Select the mp3 audio file that you want to encode from the first box. the selected audio file shouldn't have any metadata or 
   cover art attached to it and the bitrate should be 256kbps or below. you can use a tool like Mp3tag to remove 
   the metadata or cover art from the mp3 file before selecting it from this app.
@@ -20,7 +21,8 @@ Important: This app only works with the PSN version game files and may or may no
 - After you are done selecting the files, the conversion tools should all be interactable. 
 
 
-- Under the mp3 settings, set the correct sample rate and the number of channels present on the mp3 file.
+- Under the mp3 settings, set the correct sample rate and the number of channels present on the mp3 file. 
+  you can use the 'Load from mp3' option to automatically load the values from the mp3 file.
 
 
 - Under the Game audio settings, you have the option of using either the volume level from the file that 
@@ -32,12 +34,14 @@ Important: This app only works with the PSN version game files and may or may no
   than or equal to the mp3 file's size.
 
   
-- Once you have set all of the options correctly, click on the convert button. if the conversion is successful, 
-  then you will get a success message and two "New_" files. 
+- Once you have set all of the options correctly, click on the convert button. if the conversion is successful, then 
+  you will get a success message and the XXX audio file and the TOC file will be updated accordingly. 
+  the XXX audio file and the TOC file prior to the conversion, will be renamed with a .old extension.
 
 
-- Copy these two files into a new folder and rename the files. when renaming, just remove the "New_" from the filenames 
-  and leave the rest of the filename as is. 
+- And that's it. you have successfully added in a custom music track into this game.
 
 
-- Then copy these two files in the correct game folders and this way you have successfully added in a custom music track into this game.
+
+Batch Mode:
+------------------------------------------------------------------------------------------------------------------------------------------

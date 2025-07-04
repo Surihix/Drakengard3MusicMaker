@@ -5,8 +5,11 @@ namespace Drakengard3MusicMaker.ProcessHelpers
 {
     internal class ProcessSCD
     {
-        public static void ConvertAudio(string inScdFile, AppSettings appSettings)
+        public static bool ConvertAudio(string inScdFile, AppSettings appSettings)
         {
+            var outScdFile = Path.Combine(Path.GetDirectoryName(inScdFile), $"New_{Path.GetFileName(inScdFile)}");
+            SharedMethods.IfFileExistDel(outScdFile);
+
             using (var inScdStream = new FileStream(inScdFile, FileMode.Open, FileAccess.Read))
             {
                 using (var inScdReader = new BinaryReader(inScdStream))
@@ -16,17 +19,20 @@ namespace Drakengard3MusicMaker.ProcessHelpers
 
                     if (scdHeader != "SEDBSSCF")
                     {
-                        SharedMethods.ErrorStop($"Unable to detect SCD header in '{Path.GetFileName(inScdFile)}'.\nSelect a valid .XXX audio file to replace.");
-                    }
+                        if (appSettings.IsSingleMode)
+                        {
+                            SharedMethods.ErrorStop($"Unable to detect SCD header in '{Path.GetFileName(inScdFile)}'.\nSelect a valid .XXX audio file to replace.");
+                        }
 
-                    var outScdFile = Path.Combine(Path.GetDirectoryName(inScdFile), $"New_{Path.GetFileName(inScdFile)}");
-                    SharedMethods.IfFileExistDel(outScdFile);
+                        return false;
+                    }
 
                     uint audioInfoPos = 0;
                     uint audioStart = 0;
                     long mp3FileSize = 0;
                     float volumeToSet = 0;
                     uint outScdAudioStart = 0;
+                    var outSCDsize = uint.MinValue;
 
                     using (var outScdStream = new FileStream(outScdFile, FileMode.Append, FileAccess.Write))
                     {
@@ -50,19 +56,19 @@ namespace Drakengard3MusicMaker.ProcessHelpers
                             mp3Stream.Seek(0, SeekOrigin.Begin);
                             mp3Stream.CopyTo(outScdStream);
 
-                            SharedVariables.OutSCDsize = outScdStream.Length;
+                            outSCDsize = (uint)outScdStream.Length;
 
-                            if (SharedVariables.OutSCDsize % 4 != 0)
+                            if (outSCDsize % 4 != 0)
                             {
-                                var remainder = SharedVariables.OutSCDsize % 4;
+                                var remainder = outSCDsize % 4;
                                 var increaseBytes = 4 - remainder;
-                                var newSize = SharedVariables.OutSCDsize + increaseBytes;
-                                var padNulls = newSize - SharedVariables.OutSCDsize;
+                                var newSize = outSCDsize + increaseBytes;
+                                var padNulls = newSize - outSCDsize;
 
-                                outScdStream.Seek(SharedVariables.OutSCDsize, SeekOrigin.Begin);
+                                outScdStream.Seek(outSCDsize, SeekOrigin.Begin);
                                 outScdStream.PadNull(padNulls);
 
-                                SharedVariables.OutSCDsize = outScdStream.Length;
+                                outSCDsize = (uint)outScdStream.Length;
                             }
 
                             mp3FileSize = mp3Stream.Length;
@@ -103,7 +109,7 @@ namespace Drakengard3MusicMaker.ProcessHelpers
                     using (var outScdWriter = new BinaryWriter(File.Open(outScdFile, FileMode.Open, FileAccess.Write)))
                     {
                         outScdWriter.BaseStream.Position = 20;
-                        outScdWriter.WriteBytesUInt32((uint)SharedVariables.OutSCDsize, true);
+                        outScdWriter.WriteBytesUInt32(outSCDsize, true);
 
                         outScdWriter.BaseStream.Position = 296;
                         outScdWriter.WriteBytesFloat(volumeToSet, true);
@@ -125,6 +131,12 @@ namespace Drakengard3MusicMaker.ProcessHelpers
                     }
                 }
             }
+
+            SharedMethods.IfFileExistDel(inScdFile + ".old");
+            File.Move(inScdFile, inScdFile + ".old");
+            File.Move(outScdFile, inScdFile);
+
+            return true;
         }
     }
 }
