@@ -94,7 +94,7 @@ namespace Drakengard3MusicMaker
             {
                 var tocFilePath = tocPath_select.FileName;
                 var tocTxtBoxText = Path.GetFullPath($"{tocFilePath}");
-                PS3TOCPathTxtBox.Text = tocTxtBoxText;
+                PS3TOCPathTxtBox2.Text = tocTxtBoxText;
             }
         }
 

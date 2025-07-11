@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Drakengard3MusicMaker.Support;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
@@ -27,6 +28,11 @@ namespace Drakengard3MusicMaker.ProcessHelpers
             var mp3SettingsDict = new Dictionary<string, Mp3Settings>();
 
             var mp3Files = Directory.GetFiles(mp3Dir, "*.mp3", SearchOption.TopDirectoryOnly);
+
+            if (mp3Files.Length == 0)
+            {
+                SharedMethods.ErrorStop("No mp3 files were present in the specified directory!");
+            }
 
             string mp3TxtFile;
 
