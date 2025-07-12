@@ -222,6 +222,11 @@ namespace Drakengard3MusicMaker
                             var mp3InfoDict = ProcessMp3.GetMp3InfoBatch(mp3Dir);
                             var procSCDfileDict = new Dictionary<string, string>();
 
+                            if (Directory.GetFiles(xxxDir, "*.XXX", SearchOption.TopDirectoryOnly).Length == 0)
+                            {
+                                SharedMethods.ErrorStop("Specified XXX directory does not contain .XXX files");
+                            }
+
                             string scdFile;
 
                             foreach (var mp3 in mp3InfoDict)
