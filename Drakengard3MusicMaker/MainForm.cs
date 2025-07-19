@@ -240,8 +240,8 @@ namespace Drakengard3MusicMaker
                                         OutMp3File = mp3.Key,
                                         Mp3SampleRate = mp3.Value.SampleRate,
                                         Mp3ChannelCount = mp3.Value.ChannelCount,
-                                        Mp3LoopStart = mp3.Value.LoopStart == -1 ? 0 : mp3.Value.LoopStart,
-                                        Mp3LoopEnd = mp3.Value.LoopEnd == -1 ? 0 : mp3.Value.LoopEnd,
+                                        Mp3LoopStart = mp3.Value.LoopStart == 0 ? 0 : mp3.Value.LoopStart,
+                                        Mp3LoopEnd = mp3.Value.LoopEnd == 0 ? 0 : mp3.Value.LoopEnd,
                                         CustomVolumeButtonChecked = mp3.Value.Volume != -1,
                                         VolumeSliderValue = mp3.Value.Volume,
                                         IsSingleMode = false
