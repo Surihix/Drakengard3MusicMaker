@@ -1,5 +1,5 @@
 # Drakengard 3 Music Maker
-<br>![Image Text](app_repo_img.png)
+<br>![Image Text](app_repo_img2.png)
 <br><br>
 <br>This is a small C# Winforms based GUI app, that allows you to change any of the ingame music tracks from Drakengard 3. custom music encoded with this app was tested heavily with the game running off of the RPCS3 emulator and this may or may not work on an actual PS3 console. instructions to use this app can be accessed from the Help option on the app.
 <br><br>The .XXX file can be converted back to .mp3, with this program:
