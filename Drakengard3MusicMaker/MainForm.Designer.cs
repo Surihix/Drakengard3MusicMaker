@@ -487,7 +487,7 @@
             this.ConvertFilesBtn.Size = new System.Drawing.Size(115, 42);
             this.ConvertFilesBtn.TabIndex = 20;
             this.ConvertFilesBtn.Text = "Convert Files";
-            this.ConvertFilesBtnToolTip.SetToolTip(this.ConvertFilesBtn, "Convert the mp3 files to XXX audio files\r\n.");
+            this.ConvertFilesBtnToolTip.SetToolTip(this.ConvertFilesBtn, "Convert the mp3 files to XXX audio files.");
             this.ConvertFilesBtn.UseVisualStyleBackColor = true;
             this.ConvertFilesBtn.Click += new System.EventHandler(this.ConvertFilesBtn_Click);
             // 

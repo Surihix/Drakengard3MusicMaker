@@ -60,12 +60,13 @@ namespace Drakengard3MusicMaker.ProcessHelpers
         }
 
 
-        public static void BatchModeUpdate(string tocFile, Dictionary<string, string> procSCDfileDict)
+        public static bool BatchModeUpdate(string tocFile, Dictionary<string, string> procSCDfileDict)
         {
             var totalEntries = File.ReadLines(tocFile).Count();
 
             var newTocFile = Path.Combine(Path.GetDirectoryName(tocFile), $"New_{Path.GetFileName(tocFile)}");
             SharedMethods.IfFileExistDel(newTocFile);
+            var hasUpdatedTOC = false;
 
             using (StreamReader tocReader = new StreamReader(tocFile))
             {
@@ -86,6 +87,11 @@ namespace Drakengard3MusicMaker.ProcessHelpers
                             if (procSCDfileDict.ContainsKey(fileName.ToUpper()))
                             {
                                 fileSize = (uint)new FileInfo(procSCDfileDict[fileName.ToUpper()]).Length;
+
+                                if (!hasUpdatedTOC)
+                                {
+                                    hasUpdatedTOC = true;
+                                }
                             }
 
                             var currentLine = fileSize + " " + size2 + " " + filePath + " " + size3;
@@ -93,6 +99,20 @@ namespace Drakengard3MusicMaker.ProcessHelpers
                         }
                     }
                 }
+            }
+
+            if (hasUpdatedTOC)
+            {
+                SharedMethods.IfFileExistDel(tocFile + ".old");
+                File.Move(tocFile, tocFile + ".old");
+                File.Move(newTocFile, tocFile);
+
+                return true;
+            }
+            else
+            {
+                SharedMethods.IfFileExistDel(newTocFile);
+                return false;
             }
         }
     }

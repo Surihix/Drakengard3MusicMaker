@@ -60,6 +60,7 @@ namespace Drakengard3MusicMaker.ProcessHelpers
                 }
                 else
                 {
+                    mp3Settings.Volume = -1;
                     mp3SettingsDict.Add(mp3File, mp3Settings);
                 }
             }
@@ -74,7 +75,7 @@ namespace Drakengard3MusicMaker.ProcessHelpers
             {
                 var lineData = File.ReadAllLines(mp3TxtFile);
 
-                if (lineData.Length > typeof(Mp3Settings).GetFields().Length)
+                if (lineData.Length >= typeof(Mp3Settings).GetFields().Length)
                 {
                     if (decimal.TryParse(lineData[0], out decimal sampleRate) == false)
                     {

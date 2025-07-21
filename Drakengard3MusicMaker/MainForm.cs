@@ -257,9 +257,16 @@ namespace Drakengard3MusicMaker
                                 }
                             }
 
-                            ProcessTOC.BatchModeUpdate(tocFile, procSCDfileDict);
+                            var hasUpdatedTOC = ProcessTOC.BatchModeUpdate(tocFile, procSCDfileDict);
 
-                            MessageBox.Show("Replaced music data in valid XXX files and updated TOC file.\nThe XXX and the TOC files prior to the conversion process, have been renamed to '.old' files", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (hasUpdatedTOC)
+                            {
+                                MessageBox.Show("Replaced music data in valid XXX files and updated TOC file.\nThe XXX and the TOC files prior to the conversion process, have been renamed to '.old' files", "Sucess", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("TOC file was not updated as the XXX file's entry is missing in the TOC file.\nThe game might crash after it finishes playing this audio file.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
                         }
                         else
                         {
@@ -334,6 +341,14 @@ namespace Drakengard3MusicMaker
             LoopEndNumUpDown.Enabled = isEnabled;
             AboutLinkLabel.Enabled = isEnabled;
             HelpLinkLabel.Enabled = isEnabled;
+            
+            Mp3DirTxtBox.Enabled = isEnabled;
+            Mp3BrowseDirBtn.Enabled = isEnabled;
+            XXXDirTxtBox.Enabled = isEnabled;
+            XXXBrowseDirBtn.Enabled = isEnabled;
+            PS3TOCPathTxtBox2.Enabled = isEnabled;
+            PS3TOCBrowseBtn2.Enabled = isEnabled;
+            ConvertFilesBtn.Enabled = isEnabled;
         }
 
 
