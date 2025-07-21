@@ -37,6 +37,7 @@
             this.XXXBrowseBtn = new System.Windows.Forms.Button();
             this.PS3TOCBrowseBtn = new System.Windows.Forms.Button();
             this.mp3SettingsGrpBox = new System.Windows.Forms.GroupBox();
+            this.LoadFromMp3Btn = new System.Windows.Forms.Button();
             this.ChannelCountLabel = new System.Windows.Forms.Label();
             this.SampleRateLabel = new System.Windows.Forms.Label();
             this.ChannelCountNumUpDown = new System.Windows.Forms.NumericUpDown();
@@ -51,7 +52,7 @@
             this.LoopStartLabel = new System.Windows.Forms.Label();
             this.LoopEndNumUpDown = new System.Windows.Forms.NumericUpDown();
             this.LoopStartNumUpDown = new System.Windows.Forms.NumericUpDown();
-            this.ConvertAudiobtn = new System.Windows.Forms.Button();
+            this.ConvertAudioBtn = new System.Windows.Forms.Button();
             this.Mp3PathLabel = new System.Windows.Forms.Label();
             this.XXXPathLabel = new System.Windows.Forms.Label();
             this.PS3TOCPathLabel = new System.Windows.Forms.Label();
@@ -66,6 +67,21 @@
             this.HelpLinkLabel = new System.Windows.Forms.LinkLabel();
             this.AboutLinkLabel = new System.Windows.Forms.LinkLabel();
             this.AppImgPictureBox = new System.Windows.Forms.PictureBox();
+            this.TabControl = new System.Windows.Forms.TabControl();
+            this.singleTabPage = new System.Windows.Forms.TabPage();
+            this.batchTabPage = new System.Windows.Forms.TabPage();
+            this.ConvertFilesBtn = new System.Windows.Forms.Button();
+            this.PS3TOCBrowseBtn2 = new System.Windows.Forms.Button();
+            this.XXXBrowseDirBtn = new System.Windows.Forms.Button();
+            this.Mp3BrowseDirBtn = new System.Windows.Forms.Button();
+            this.PS3TOCPathTxtBox2 = new System.Windows.Forms.TextBox();
+            this.XXXDirTxtBox = new System.Windows.Forms.TextBox();
+            this.Mp3DirTxtBox = new System.Windows.Forms.TextBox();
+            this.PS3TOCPathLabel2 = new System.Windows.Forms.Label();
+            this.XXXDirLabel = new System.Windows.Forms.Label();
+            this.Mp3DirLabel = new System.Windows.Forms.Label();
+            this.LoadFromMp3BtnToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.ConvertFilesBtnToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.mp3SettingsGrpBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChannelCountNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SampleRateNumUpDown)).BeginInit();
@@ -75,35 +91,35 @@
             ((System.ComponentModel.ISupportInitialize)(this.LoopEndNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoopStartNumUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AppImgPictureBox)).BeginInit();
+            this.TabControl.SuspendLayout();
+            this.singleTabPage.SuspendLayout();
+            this.batchTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // Mp3PathTxtBox
             // 
-            this.Mp3PathTxtBox.Location = new System.Drawing.Point(12, 192);
+            this.Mp3PathTxtBox.Location = new System.Drawing.Point(10, 31);
             this.Mp3PathTxtBox.Name = "Mp3PathTxtBox";
-            this.Mp3PathTxtBox.Size = new System.Drawing.Size(488, 20);
+            this.Mp3PathTxtBox.Size = new System.Drawing.Size(459, 20);
             this.Mp3PathTxtBox.TabIndex = 1;
-            this.Mp3PathTxtBox.TextChanged += new System.EventHandler(this.Mp3PathTxtBox_TextChanged);
             // 
             // XXXPathTxtBox
             // 
-            this.XXXPathTxtBox.Location = new System.Drawing.Point(11, 242);
+            this.XXXPathTxtBox.Location = new System.Drawing.Point(10, 81);
             this.XXXPathTxtBox.Name = "XXXPathTxtBox";
-            this.XXXPathTxtBox.Size = new System.Drawing.Size(488, 20);
+            this.XXXPathTxtBox.Size = new System.Drawing.Size(459, 20);
             this.XXXPathTxtBox.TabIndex = 2;
-            this.XXXPathTxtBox.TextChanged += new System.EventHandler(this.XXXPathTxtBox_TextChanged);
             // 
             // PS3TOCPathTxtBox
             // 
-            this.PS3TOCPathTxtBox.Location = new System.Drawing.Point(11, 292);
+            this.PS3TOCPathTxtBox.Location = new System.Drawing.Point(10, 131);
             this.PS3TOCPathTxtBox.Name = "PS3TOCPathTxtBox";
-            this.PS3TOCPathTxtBox.Size = new System.Drawing.Size(488, 20);
+            this.PS3TOCPathTxtBox.Size = new System.Drawing.Size(459, 20);
             this.PS3TOCPathTxtBox.TabIndex = 3;
-            this.PS3TOCPathTxtBox.TextChanged += new System.EventHandler(this.PS3TOCPathTxtBox_TextChanged);
             // 
             // Mp3BrowseBtn
             // 
-            this.Mp3BrowseBtn.Location = new System.Drawing.Point(506, 191);
+            this.Mp3BrowseBtn.Location = new System.Drawing.Point(475, 31);
             this.Mp3BrowseBtn.Name = "Mp3BrowseBtn";
             this.Mp3BrowseBtn.Size = new System.Drawing.Size(62, 23);
             this.Mp3BrowseBtn.TabIndex = 4;
@@ -113,7 +129,7 @@
             // 
             // XXXBrowseBtn
             // 
-            this.XXXBrowseBtn.Location = new System.Drawing.Point(506, 241);
+            this.XXXBrowseBtn.Location = new System.Drawing.Point(475, 81);
             this.XXXBrowseBtn.Name = "XXXBrowseBtn";
             this.XXXBrowseBtn.Size = new System.Drawing.Size(62, 23);
             this.XXXBrowseBtn.TabIndex = 5;
@@ -123,7 +139,7 @@
             // 
             // PS3TOCBrowseBtn
             // 
-            this.PS3TOCBrowseBtn.Location = new System.Drawing.Point(506, 291);
+            this.PS3TOCBrowseBtn.Location = new System.Drawing.Point(475, 131);
             this.PS3TOCBrowseBtn.Name = "PS3TOCBrowseBtn";
             this.PS3TOCBrowseBtn.Size = new System.Drawing.Size(62, 23);
             this.PS3TOCBrowseBtn.TabIndex = 6;
@@ -133,21 +149,33 @@
             // 
             // mp3SettingsGrpBox
             // 
+            this.mp3SettingsGrpBox.Controls.Add(this.LoadFromMp3Btn);
             this.mp3SettingsGrpBox.Controls.Add(this.ChannelCountLabel);
             this.mp3SettingsGrpBox.Controls.Add(this.SampleRateLabel);
             this.mp3SettingsGrpBox.Controls.Add(this.ChannelCountNumUpDown);
             this.mp3SettingsGrpBox.Controls.Add(this.SampleRateNumUpDown);
-            this.mp3SettingsGrpBox.Location = new System.Drawing.Point(12, 364);
+            this.mp3SettingsGrpBox.Location = new System.Drawing.Point(10, 177);
             this.mp3SettingsGrpBox.Name = "mp3SettingsGrpBox";
-            this.mp3SettingsGrpBox.Size = new System.Drawing.Size(261, 99);
+            this.mp3SettingsGrpBox.Size = new System.Drawing.Size(347, 99);
             this.mp3SettingsGrpBox.TabIndex = 7;
             this.mp3SettingsGrpBox.TabStop = false;
             this.mp3SettingsGrpBox.Text = "mp3 Settings :";
             // 
+            // LoadFromMp3Btn
+            // 
+            this.LoadFromMp3Btn.Location = new System.Drawing.Point(29, 31);
+            this.LoadFromMp3Btn.Name = "LoadFromMp3Btn";
+            this.LoadFromMp3Btn.Size = new System.Drawing.Size(93, 32);
+            this.LoadFromMp3Btn.TabIndex = 7;
+            this.LoadFromMp3Btn.Text = "Load from mp3";
+            this.LoopEndToolTip.SetToolTip(this.LoadFromMp3Btn, "Load settings from the selected mp3 file.");
+            this.LoadFromMp3Btn.UseVisualStyleBackColor = true;
+            this.LoadFromMp3Btn.Click += new System.EventHandler(this.LoadFromMp3Btn_Click);
+            // 
             // ChannelCountLabel
             // 
             this.ChannelCountLabel.AutoSize = true;
-            this.ChannelCountLabel.Location = new System.Drawing.Point(145, 29);
+            this.ChannelCountLabel.Location = new System.Drawing.Point(156, 31);
             this.ChannelCountLabel.Name = "ChannelCountLabel";
             this.ChannelCountLabel.Size = new System.Drawing.Size(80, 13);
             this.ChannelCountLabel.TabIndex = 3;
@@ -156,7 +184,7 @@
             // SampleRateLabel
             // 
             this.SampleRateLabel.AutoSize = true;
-            this.SampleRateLabel.Location = new System.Drawing.Point(31, 29);
+            this.SampleRateLabel.Location = new System.Drawing.Point(165, 55);
             this.SampleRateLabel.Name = "SampleRateLabel";
             this.SampleRateLabel.Size = new System.Drawing.Size(71, 13);
             this.SampleRateLabel.TabIndex = 2;
@@ -164,7 +192,7 @@
             // 
             // ChannelCountNumUpDown
             // 
-            this.ChannelCountNumUpDown.Location = new System.Drawing.Point(148, 45);
+            this.ChannelCountNumUpDown.Location = new System.Drawing.Point(242, 24);
             this.ChannelCountNumUpDown.Maximum = new decimal(new int[] {
             2,
             0,
@@ -187,7 +215,7 @@
             // 
             // SampleRateNumUpDown
             // 
-            this.SampleRateNumUpDown.Location = new System.Drawing.Point(34, 45);
+            this.SampleRateNumUpDown.Location = new System.Drawing.Point(242, 53);
             this.SampleRateNumUpDown.Maximum = new decimal(new int[] {
             48000,
             0,
@@ -205,9 +233,9 @@
             this.GameAudioSettingsGrpBox.Controls.Add(this.OgVolRadioButton);
             this.GameAudioSettingsGrpBox.Controls.Add(this.VolSlider);
             this.GameAudioSettingsGrpBox.Controls.Add(this.ExperimentalGrpBox);
-            this.GameAudioSettingsGrpBox.Location = new System.Drawing.Point(12, 481);
+            this.GameAudioSettingsGrpBox.Location = new System.Drawing.Point(10, 295);
             this.GameAudioSettingsGrpBox.Name = "GameAudioSettingsGrpBox";
-            this.GameAudioSettingsGrpBox.Size = new System.Drawing.Size(555, 129);
+            this.GameAudioSettingsGrpBox.Size = new System.Drawing.Size(527, 129);
             this.GameAudioSettingsGrpBox.TabIndex = 8;
             this.GameAudioSettingsGrpBox.TabStop = false;
             this.GameAudioSettingsGrpBox.Text = "Game Audio Settings :";
@@ -215,7 +243,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 99);
+            this.label2.Location = new System.Drawing.Point(21, 98);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(145, 13);
             this.label2.TabIndex = 4;
@@ -224,7 +252,7 @@
             // CustomVolRadioButton
             // 
             this.CustomVolRadioButton.AutoSize = true;
-            this.CustomVolRadioButton.Location = new System.Drawing.Point(48, 46);
+            this.CustomVolRadioButton.Location = new System.Drawing.Point(13, 47);
             this.CustomVolRadioButton.Name = "CustomVolRadioButton";
             this.CustomVolRadioButton.Size = new System.Drawing.Size(117, 17);
             this.CustomVolRadioButton.TabIndex = 3;
@@ -237,7 +265,7 @@
             // OgVolRadioButton
             // 
             this.OgVolRadioButton.AutoSize = true;
-            this.OgVolRadioButton.Location = new System.Drawing.Point(48, 22);
+            this.OgVolRadioButton.Location = new System.Drawing.Point(13, 24);
             this.OgVolRadioButton.Name = "OgVolRadioButton";
             this.OgVolRadioButton.Size = new System.Drawing.Size(121, 17);
             this.OgVolRadioButton.TabIndex = 2;
@@ -249,8 +277,9 @@
             // 
             // VolSlider
             // 
+            this.VolSlider.BackColor = System.Drawing.SystemColors.Control;
             this.VolSlider.LargeChange = 1;
-            this.VolSlider.Location = new System.Drawing.Point(34, 71);
+            this.VolSlider.Location = new System.Drawing.Point(13, 70);
             this.VolSlider.Maximum = 6;
             this.VolSlider.Name = "VolSlider";
             this.VolSlider.Size = new System.Drawing.Size(161, 45);
@@ -262,7 +291,7 @@
             this.ExperimentalGrpBox.Controls.Add(this.LoopStartLabel);
             this.ExperimentalGrpBox.Controls.Add(this.LoopEndNumUpDown);
             this.ExperimentalGrpBox.Controls.Add(this.LoopStartNumUpDown);
-            this.ExperimentalGrpBox.Location = new System.Drawing.Point(305, 19);
+            this.ExperimentalGrpBox.Location = new System.Drawing.Point(267, 19);
             this.ExperimentalGrpBox.Name = "ExperimentalGrpBox";
             this.ExperimentalGrpBox.Size = new System.Drawing.Size(235, 88);
             this.ExperimentalGrpBox.TabIndex = 0;
@@ -313,23 +342,23 @@
             this.LoopStartNumUpDown.TabIndex = 0;
             this.LoopStartToolTip.SetToolTip(this.LoopStartNumUpDown, "Set the loop start value in bytes.");
             // 
-            // ConvertAudiobtn
+            // ConvertAudioBtn
             // 
-            this.ConvertAudiobtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConvertAudiobtn.Location = new System.Drawing.Point(396, 396);
-            this.ConvertAudiobtn.Name = "ConvertAudiobtn";
-            this.ConvertAudiobtn.Size = new System.Drawing.Size(115, 42);
-            this.ConvertAudiobtn.TabIndex = 9;
-            this.ConvertAudiobtn.Text = "Convert Audio";
-            this.ConvertAudioBtnToolTip.SetToolTip(this.ConvertAudiobtn, "Convert the selected mp3 file to XXX audio file.");
-            this.ConvertAudiobtn.UseVisualStyleBackColor = true;
-            this.ConvertAudiobtn.Click += new System.EventHandler(this.ConvertAudiobtn_Click);
+            this.ConvertAudioBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConvertAudioBtn.Location = new System.Drawing.Point(398, 208);
+            this.ConvertAudioBtn.Name = "ConvertAudioBtn";
+            this.ConvertAudioBtn.Size = new System.Drawing.Size(115, 42);
+            this.ConvertAudioBtn.TabIndex = 9;
+            this.ConvertAudioBtn.Text = "Convert Audio";
+            this.ConvertAudioBtnToolTip.SetToolTip(this.ConvertAudioBtn, "Convert the selected mp3 file to XXX audio file.");
+            this.ConvertAudioBtn.UseVisualStyleBackColor = true;
+            this.ConvertAudioBtn.Click += new System.EventHandler(this.ConvertAudioBtn_Click);
             // 
             // Mp3PathLabel
             // 
             this.Mp3PathLabel.AutoSize = true;
             this.Mp3PathLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Mp3PathLabel.Location = new System.Drawing.Point(12, 174);
+            this.Mp3PathLabel.Location = new System.Drawing.Point(7, 13);
             this.Mp3PathLabel.Name = "Mp3PathLabel";
             this.Mp3PathLabel.Size = new System.Drawing.Size(149, 15);
             this.Mp3PathLabel.TabIndex = 10;
@@ -339,7 +368,7 @@
             // 
             this.XXXPathLabel.AutoSize = true;
             this.XXXPathLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.XXXPathLabel.Location = new System.Drawing.Point(12, 224);
+            this.XXXPathLabel.Location = new System.Drawing.Point(7, 63);
             this.XXXPathLabel.Name = "XXXPathLabel";
             this.XXXPathLabel.Size = new System.Drawing.Size(181, 15);
             this.XXXPathLabel.TabIndex = 11;
@@ -349,7 +378,7 @@
             // 
             this.PS3TOCPathLabel.AutoSize = true;
             this.PS3TOCPathLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PS3TOCPathLabel.Location = new System.Drawing.Point(12, 274);
+            this.PS3TOCPathLabel.Location = new System.Drawing.Point(7, 113);
             this.PS3TOCPathLabel.Name = "PS3TOCPathLabel";
             this.PS3TOCPathLabel.Size = new System.Drawing.Size(113, 15);
             this.PS3TOCPathLabel.TabIndex = 12;
@@ -359,17 +388,17 @@
             // 
             this.VersionLabel.AutoSize = true;
             this.VersionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VersionLabel.Location = new System.Drawing.Point(278, 639);
+            this.VersionLabel.Location = new System.Drawing.Point(278, 645);
             this.VersionLabel.Name = "VersionLabel";
             this.VersionLabel.Size = new System.Drawing.Size(29, 15);
             this.VersionLabel.TabIndex = 13;
-            this.VersionLabel.Text = "v1.3";
+            this.VersionLabel.Text = "v1.4";
             // 
             // HelpLinkLabel
             // 
             this.HelpLinkLabel.AutoSize = true;
             this.HelpLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HelpLinkLabel.Location = new System.Drawing.Point(533, 639);
+            this.HelpLinkLabel.Location = new System.Drawing.Point(529, 645);
             this.HelpLinkLabel.Name = "HelpLinkLabel";
             this.HelpLinkLabel.Size = new System.Drawing.Size(36, 16);
             this.HelpLinkLabel.TabIndex = 14;
@@ -381,7 +410,7 @@
             // 
             this.AboutLinkLabel.AutoSize = true;
             this.AboutLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AboutLinkLabel.Location = new System.Drawing.Point(10, 639);
+            this.AboutLinkLabel.Location = new System.Drawing.Point(13, 645);
             this.AboutLinkLabel.Name = "AboutLinkLabel";
             this.AboutLinkLabel.Size = new System.Drawing.Size(42, 16);
             this.AboutLinkLabel.TabIndex = 15;
@@ -398,26 +427,160 @@
             this.AppImgPictureBox.TabIndex = 0;
             this.AppImgPictureBox.TabStop = false;
             // 
+            // TabControl
+            // 
+            this.TabControl.Controls.Add(this.singleTabPage);
+            this.TabControl.Controls.Add(this.batchTabPage);
+            this.TabControl.Location = new System.Drawing.Point(12, 169);
+            this.TabControl.Name = "TabControl";
+            this.TabControl.SelectedIndex = 0;
+            this.TabControl.Size = new System.Drawing.Size(557, 464);
+            this.TabControl.TabIndex = 16;
+            // 
+            // singleTabPage
+            // 
+            this.singleTabPage.BackColor = System.Drawing.Color.Transparent;
+            this.singleTabPage.Controls.Add(this.Mp3PathLabel);
+            this.singleTabPage.Controls.Add(this.Mp3PathTxtBox);
+            this.singleTabPage.Controls.Add(this.XXXPathTxtBox);
+            this.singleTabPage.Controls.Add(this.PS3TOCPathTxtBox);
+            this.singleTabPage.Controls.Add(this.GameAudioSettingsGrpBox);
+            this.singleTabPage.Controls.Add(this.ConvertAudioBtn);
+            this.singleTabPage.Controls.Add(this.PS3TOCPathLabel);
+            this.singleTabPage.Controls.Add(this.Mp3BrowseBtn);
+            this.singleTabPage.Controls.Add(this.mp3SettingsGrpBox);
+            this.singleTabPage.Controls.Add(this.XXXPathLabel);
+            this.singleTabPage.Controls.Add(this.XXXBrowseBtn);
+            this.singleTabPage.Controls.Add(this.PS3TOCBrowseBtn);
+            this.singleTabPage.Location = new System.Drawing.Point(4, 22);
+            this.singleTabPage.Name = "singleTabPage";
+            this.singleTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.singleTabPage.Size = new System.Drawing.Size(549, 438);
+            this.singleTabPage.TabIndex = 0;
+            this.singleTabPage.Text = "Single Mode";
+            // 
+            // batchTabPage
+            // 
+            this.batchTabPage.BackColor = System.Drawing.Color.Transparent;
+            this.batchTabPage.Controls.Add(this.ConvertFilesBtn);
+            this.batchTabPage.Controls.Add(this.PS3TOCBrowseBtn2);
+            this.batchTabPage.Controls.Add(this.XXXBrowseDirBtn);
+            this.batchTabPage.Controls.Add(this.Mp3BrowseDirBtn);
+            this.batchTabPage.Controls.Add(this.PS3TOCPathTxtBox2);
+            this.batchTabPage.Controls.Add(this.XXXDirTxtBox);
+            this.batchTabPage.Controls.Add(this.Mp3DirTxtBox);
+            this.batchTabPage.Controls.Add(this.PS3TOCPathLabel2);
+            this.batchTabPage.Controls.Add(this.XXXDirLabel);
+            this.batchTabPage.Controls.Add(this.Mp3DirLabel);
+            this.batchTabPage.Location = new System.Drawing.Point(4, 22);
+            this.batchTabPage.Name = "batchTabPage";
+            this.batchTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.batchTabPage.Size = new System.Drawing.Size(549, 438);
+            this.batchTabPage.TabIndex = 1;
+            this.batchTabPage.Text = "Batch Mode";
+            // 
+            // ConvertFilesBtn
+            // 
+            this.ConvertFilesBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ConvertFilesBtn.Location = new System.Drawing.Point(217, 199);
+            this.ConvertFilesBtn.Name = "ConvertFilesBtn";
+            this.ConvertFilesBtn.Size = new System.Drawing.Size(115, 42);
+            this.ConvertFilesBtn.TabIndex = 20;
+            this.ConvertFilesBtn.Text = "Convert Files";
+            this.ConvertFilesBtnToolTip.SetToolTip(this.ConvertFilesBtn, "Convert the mp3 files to XXX audio files.");
+            this.ConvertFilesBtn.UseVisualStyleBackColor = true;
+            this.ConvertFilesBtn.Click += new System.EventHandler(this.ConvertFilesBtn_Click);
+            // 
+            // PS3TOCBrowseBtn2
+            // 
+            this.PS3TOCBrowseBtn2.Location = new System.Drawing.Point(475, 131);
+            this.PS3TOCBrowseBtn2.Name = "PS3TOCBrowseBtn2";
+            this.PS3TOCBrowseBtn2.Size = new System.Drawing.Size(62, 23);
+            this.PS3TOCBrowseBtn2.TabIndex = 19;
+            this.PS3TOCBrowseBtn2.Text = "Browse...";
+            this.PS3TOCBrowseBtn2.UseVisualStyleBackColor = true;
+            this.PS3TOCBrowseBtn2.Click += new System.EventHandler(this.PS3TOCBrowseBtn2_Click);
+            // 
+            // XXXBrowseDirBtn
+            // 
+            this.XXXBrowseDirBtn.Location = new System.Drawing.Point(475, 81);
+            this.XXXBrowseDirBtn.Name = "XXXBrowseDirBtn";
+            this.XXXBrowseDirBtn.Size = new System.Drawing.Size(62, 23);
+            this.XXXBrowseDirBtn.TabIndex = 18;
+            this.XXXBrowseDirBtn.Text = "Browse...";
+            this.XXXBrowseDirBtn.UseVisualStyleBackColor = true;
+            this.XXXBrowseDirBtn.Click += new System.EventHandler(this.XXXBrowseDirBtn_Click);
+            // 
+            // Mp3BrowseDirBtn
+            // 
+            this.Mp3BrowseDirBtn.Location = new System.Drawing.Point(475, 31);
+            this.Mp3BrowseDirBtn.Name = "Mp3BrowseDirBtn";
+            this.Mp3BrowseDirBtn.Size = new System.Drawing.Size(62, 23);
+            this.Mp3BrowseDirBtn.TabIndex = 17;
+            this.Mp3BrowseDirBtn.Text = "Browse...";
+            this.Mp3BrowseDirBtn.UseVisualStyleBackColor = true;
+            this.Mp3BrowseDirBtn.Click += new System.EventHandler(this.Mp3BrowseDirBtn_Click);
+            // 
+            // PS3TOCPathTxtBox2
+            // 
+            this.PS3TOCPathTxtBox2.Location = new System.Drawing.Point(10, 131);
+            this.PS3TOCPathTxtBox2.Name = "PS3TOCPathTxtBox2";
+            this.PS3TOCPathTxtBox2.Size = new System.Drawing.Size(459, 20);
+            this.PS3TOCPathTxtBox2.TabIndex = 16;
+            // 
+            // XXXDirTxtBox
+            // 
+            this.XXXDirTxtBox.Location = new System.Drawing.Point(10, 81);
+            this.XXXDirTxtBox.Name = "XXXDirTxtBox";
+            this.XXXDirTxtBox.Size = new System.Drawing.Size(459, 20);
+            this.XXXDirTxtBox.TabIndex = 15;
+            // 
+            // Mp3DirTxtBox
+            // 
+            this.Mp3DirTxtBox.Location = new System.Drawing.Point(10, 31);
+            this.Mp3DirTxtBox.Name = "Mp3DirTxtBox";
+            this.Mp3DirTxtBox.Size = new System.Drawing.Size(459, 20);
+            this.Mp3DirTxtBox.TabIndex = 14;
+            // 
+            // PS3TOCPathLabel2
+            // 
+            this.PS3TOCPathLabel2.AutoSize = true;
+            this.PS3TOCPathLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PS3TOCPathLabel2.Location = new System.Drawing.Point(7, 113);
+            this.PS3TOCPathLabel2.Name = "PS3TOCPathLabel2";
+            this.PS3TOCPathLabel2.Size = new System.Drawing.Size(113, 15);
+            this.PS3TOCPathLabel2.TabIndex = 13;
+            this.PS3TOCPathLabel2.Text = "Select PS3TOC file:";
+            // 
+            // XXXDirLabel
+            // 
+            this.XXXDirLabel.AutoSize = true;
+            this.XXXDirLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.XXXDirLabel.Location = new System.Drawing.Point(7, 63);
+            this.XXXDirLabel.Name = "XXXDirLabel";
+            this.XXXDirLabel.Size = new System.Drawing.Size(296, 15);
+            this.XXXDirLabel.TabIndex = 12;
+            this.XXXDirLabel.Text = "Select directory containing XXX audio files to replace:";
+            // 
+            // Mp3DirLabel
+            // 
+            this.Mp3DirLabel.AutoSize = true;
+            this.Mp3DirLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Mp3DirLabel.Location = new System.Drawing.Point(7, 13);
+            this.Mp3DirLabel.Name = "Mp3DirLabel";
+            this.Mp3DirLabel.Size = new System.Drawing.Size(263, 15);
+            this.Mp3DirLabel.TabIndex = 11;
+            this.Mp3DirLabel.Text = "Select directory containing mp3 files to encode:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 661);
+            this.ClientSize = new System.Drawing.Size(580, 675);
+            this.Controls.Add(this.TabControl);
             this.Controls.Add(this.AboutLinkLabel);
             this.Controls.Add(this.HelpLinkLabel);
             this.Controls.Add(this.VersionLabel);
-            this.Controls.Add(this.PS3TOCPathLabel);
-            this.Controls.Add(this.XXXPathLabel);
-            this.Controls.Add(this.Mp3PathLabel);
-            this.Controls.Add(this.ConvertAudiobtn);
-            this.Controls.Add(this.GameAudioSettingsGrpBox);
-            this.Controls.Add(this.mp3SettingsGrpBox);
-            this.Controls.Add(this.PS3TOCBrowseBtn);
-            this.Controls.Add(this.XXXBrowseBtn);
-            this.Controls.Add(this.Mp3BrowseBtn);
-            this.Controls.Add(this.PS3TOCPathTxtBox);
-            this.Controls.Add(this.XXXPathTxtBox);
-            this.Controls.Add(this.Mp3PathTxtBox);
             this.Controls.Add(this.AppImgPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -436,6 +599,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.LoopEndNumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LoopStartNumUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AppImgPictureBox)).EndInit();
+            this.TabControl.ResumeLayout(false);
+            this.singleTabPage.ResumeLayout(false);
+            this.singleTabPage.PerformLayout();
+            this.batchTabPage.ResumeLayout(false);
+            this.batchTabPage.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -452,7 +620,7 @@
         private System.Windows.Forms.Button PS3TOCBrowseBtn;
         private System.Windows.Forms.GroupBox mp3SettingsGrpBox;
         private System.Windows.Forms.GroupBox GameAudioSettingsGrpBox;
-        private System.Windows.Forms.Button ConvertAudiobtn;
+        private System.Windows.Forms.Button ConvertAudioBtn;
         private System.Windows.Forms.GroupBox ExperimentalGrpBox;
         private System.Windows.Forms.NumericUpDown ChannelCountNumUpDown;
         private System.Windows.Forms.NumericUpDown SampleRateNumUpDown;
@@ -479,6 +647,22 @@
         private System.Windows.Forms.ToolTip LoopStartToolTip;
         private System.Windows.Forms.LinkLabel HelpLinkLabel;
         private System.Windows.Forms.LinkLabel AboutLinkLabel;
+        private System.Windows.Forms.TabControl TabControl;
+        private System.Windows.Forms.TabPage singleTabPage;
+        private System.Windows.Forms.TabPage batchTabPage;
+        private System.Windows.Forms.TextBox PS3TOCPathTxtBox2;
+        private System.Windows.Forms.TextBox XXXDirTxtBox;
+        private System.Windows.Forms.TextBox Mp3DirTxtBox;
+        private System.Windows.Forms.Label PS3TOCPathLabel2;
+        private System.Windows.Forms.Label XXXDirLabel;
+        private System.Windows.Forms.Label Mp3DirLabel;
+        private System.Windows.Forms.Button PS3TOCBrowseBtn2;
+        private System.Windows.Forms.Button XXXBrowseDirBtn;
+        private System.Windows.Forms.Button Mp3BrowseDirBtn;
+        private System.Windows.Forms.Button LoadFromMp3Btn;
+        private System.Windows.Forms.ToolTip LoadFromMp3BtnToolTip;
+        private System.Windows.Forms.Button ConvertFilesBtn;
+        private System.Windows.Forms.ToolTip ConvertFilesBtnToolTip;
     }
 }
 
